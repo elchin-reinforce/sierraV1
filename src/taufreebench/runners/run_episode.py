@@ -46,6 +46,12 @@ def _make_agent(agent_type: str, agent_model: str | None = None):
     if agent_type == "openrouter":
         from taufreebench.agents.openrouter_tool_agent import OpenRouterToolAgent
         return OpenRouterToolAgent(model=agent_model)
+    if agent_type == "anthropic":
+        from taufreebench.agents.anthropic_tool_agent import AnthropicToolAgent
+        return AnthropicToolAgent(model=agent_model)
+    if agent_type == "openai":
+        from taufreebench.agents.openai_tool_agent import OpenAIToolAgent
+        return OpenAIToolAgent(model=agent_model)
     if agent_type == "auto-free":
         from taufreebench.providers.calibration import load_best_free_model
         best = load_best_free_model()
@@ -73,6 +79,12 @@ def _make_user(user_type: str, task_id: str, user_model: str | None = None):
     if user_type == "openrouter":
         from taufreebench.users.openrouter_user import OpenRouterUser
         return OpenRouterUser(model=user_model)
+    if user_type == "openai":
+        from taufreebench.users.openai_user import OpenAIUser
+        return OpenAIUser(model=user_model)
+    if user_type == "anthropic":
+        from taufreebench.users.anthropic_user import AnthropicUser
+        return AnthropicUser(model=user_model)
     raise ValueError(f"Unknown user type: {user_type}")
 
 

@@ -25,11 +25,12 @@ A clean-room educational reimplementation of τ-bench — a benchmark for evalua
 
 ### Mode 3 — LLM agent + LLM user (closest to paper)
 
-| Model | User sim | Tasks | Trials | pass^1 | pass@3 |
-|-------|----------|-------|--------|--------|--------|
-| qwen3:8b (Ollama) | llama3.1:8b | 25 | 3 | **0.120** | 0.200 |
+| Agent | User sim | Tasks | Trials | pass^1 | pass@3 | Run |
+|-------|----------|-------|--------|--------|--------|-----|
+| gpt-5.2 (OpenAI) | gpt-5.2 | 25 | 3 | **0.147** | 0.160 | [20260512_164757](runs/20260512_164757/report.md) |
+| qwen3:8b (Ollama, local) | llama3.1:8b | 25 | 3 | **0.120** | 0.200 | [20260512_152713](runs/20260512_152713/report.md) |
 
-Run: [`runs/20260512_152713/`](runs/20260512_152713/report.md) — full per-task breakdown, failure analysis, validity audit
+> Note: user simulators differ between runs, so the comparison is not strictly apples-to-apples. The paper's methodology uses a single user simulator across all agents.
 
 ### Mode 1 — Rule-based + scripted (sanity check, not an LLM score)
 
