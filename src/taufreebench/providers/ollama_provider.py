@@ -46,6 +46,8 @@ class OllamaProvider(ChatProvider):
             "messages": messages,
             "stream": False,
             "options": {"temperature": temperature},
+            # Disable extended thinking for qwen3 models (massively reduces latency)
+            "think": False,
         }
         if tools:
             payload["tools"] = [_to_ollama_tool(t) for t in tools]
@@ -75,9 +77,17 @@ class OllamaProvider(ChatProvider):
                     args = json.loads(args)
                 except Exception:
                     args = {}
+            tc_obj = ToolCall(name=fn.get("name", ""), arguments=args)
+            # Ollama /api/chat expects the assistant message with tool_calls
+            # in history before the tool result (no IDs required).
+            tc_obj._assistant_turn = {
+                "role": "assistant",
+                "content": content or "",
+                "tool_calls": [{"function": {"name": fn.get("name", ""), "arguments": args}}],
+            }
             return ProviderResponse(
                 content=content or None,
-                tool_call=ToolCall(name=fn.get("name", ""), arguments=args),
+                tool_call=tc_obj,
                 raw=data,
                 latency_seconds=latency,
             )

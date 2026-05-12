@@ -24,9 +24,14 @@ def run_benchmark(
 
     results_by_task: dict[str, list[dict[str, Any]]] = {}
 
+    total = len(all_tasks) * trials
+    done = 0
+
     for task in all_tasks:
         results_by_task[task.id] = []
         for trial in range(trials):
+            done += 1
+            print(f"  [{done}/{total}] {task.id} trial {trial + 1}", flush=True)
             try:
                 episode = run_episode_for_task(
                     domain=domain,

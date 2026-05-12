@@ -1,12 +1,16 @@
 """Core data types for tau-free-bench."""
 from __future__ import annotations
 from typing import Any, Literal
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, PrivateAttr
 
 
 class ToolCall(BaseModel):
     name: str
     arguments: dict[str, Any] = Field(default_factory=dict)
+    tool_call_id: str | None = None
+    # Set by LLM providers so environment.py can inject the correct assistant
+    # message into history before the tool result (not serialized to JSON).
+    _assistant_turn: dict[str, Any] | None = PrivateAttr(default=None)
 
 
 class AgentMessage(BaseModel):

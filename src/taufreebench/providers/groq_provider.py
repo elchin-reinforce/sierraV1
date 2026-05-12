@@ -51,10 +51,18 @@ class GroqProvider(ChatProvider):
             kwargs["tool_choice"] = "auto"
 
         t0 = time.monotonic()
-        try:
-            response = client.chat.completions.create(**kwargs)
-        except Exception as e:
-            raise RuntimeError(f"Groq request failed: {e}")
+        backoff = 5.0
+        for attempt in range(6):
+            try:
+                response = client.chat.completions.create(**kwargs)
+                break
+            except Exception as e:
+                err_str = str(e)
+                if "429" in err_str and attempt < 5:
+                    time.sleep(backoff)
+                    backoff = min(backoff * 2, 60.0)
+                    continue
+                raise RuntimeError(f"Groq request failed: {e}")
         latency = time.monotonic() - t0
 
         msg = response.choices[0].message
@@ -64,9 +72,15 @@ class GroqProvider(ChatProvider):
                 args = json.loads(tc.function.arguments)
             except Exception:
                 args = {}
-            return ProviderResponse(
-                tool_call=ToolCall(name=tc.function.name, arguments=args),
-                raw={},
-                latency_seconds=latency,
-            )
+            tc_obj = ToolCall(name=tc.function.name, arguments=args, tool_call_id=tc.id)
+            tc_obj._assistant_turn = {
+                "role": "assistant",
+                "content": None,
+                "tool_calls": [{
+                    "id": tc.id,
+                    "type": "function",
+                    "function": {"name": tc.function.name, "arguments": tc.function.arguments},
+                }],
+            }
+            return ProviderResponse(tool_call=tc_obj, raw={}, latency_seconds=latency)
         return ProviderResponse(content=msg.content or "", raw={}, latency_seconds=latency)

@@ -69,13 +69,21 @@ class BenchmarkEnvironment:
                 tool_calls += 1
                 trajectory.append(TrajectoryStep(role="agent", content=action.model_dump(), metadata={"type": "tool_call"}))
 
+                # LLM providers set _assistant_turn to the exact message dict
+                # that belongs in history before the tool result.
+                if action._assistant_turn is not None:
+                    agent_history.append(action._assistant_turn)
+
                 tool_def = self.tools.get(action.name)
                 if tool_def is None:
                     invalid_tool_calls += 1
                     result_str = f"Error: Unknown tool '{action.name}'"
                     result = ToolResult(name=action.name, result=result_str)
                     trajectory.append(TrajectoryStep(role="tool", content=result.model_dump()))
-                    agent_history.append({"role": "tool", "tool_name": action.name, "content": result_str})
+                    if action.tool_call_id:
+                        agent_history.append({"role": "tool", "tool_call_id": action.tool_call_id, "content": result_str})
+                    else:
+                        agent_history.append({"role": "tool", "tool_name": action.name, "content": result_str})
                     continue
 
                 try:
@@ -93,7 +101,10 @@ class BenchmarkEnvironment:
                     result_str = json.dumps(result.result, ensure_ascii=False) if not isinstance(result.result, str) else result.result
                 except Exception:
                     result_str = str(result.result)
-                agent_history.append({"role": "tool", "tool_name": action.name, "content": result_str})
+                if action.tool_call_id:
+                    agent_history.append({"role": "tool", "tool_call_id": action.tool_call_id, "content": result_str})
+                else:
+                    agent_history.append({"role": "tool", "tool_name": action.name, "content": result_str})
 
             elif isinstance(action, AgentMessage):
                 agent_messages.append(action.content)

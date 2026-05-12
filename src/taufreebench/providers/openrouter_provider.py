@@ -58,13 +58,20 @@ class OpenRouterProvider(ChatProvider):
         tool_calls = msg.get("tool_calls", [])
         if tool_calls:
             tc = tool_calls[0]
+            tc_id = tc.get("id", "")
             try:
                 args = json.loads(tc["function"]["arguments"])
             except Exception:
                 args = {}
-            return ProviderResponse(
-                tool_call=ToolCall(name=tc["function"]["name"], arguments=args),
-                raw=data,
-                latency_seconds=latency,
-            )
+            tc_obj = ToolCall(name=tc["function"]["name"], arguments=args, tool_call_id=tc_id or None)
+            tc_obj._assistant_turn = {
+                "role": "assistant",
+                "content": None,
+                "tool_calls": [{
+                    "id": tc_id,
+                    "type": "function",
+                    "function": {"name": tc["function"]["name"], "arguments": tc["function"]["arguments"]},
+                }],
+            }
+            return ProviderResponse(tool_call=tc_obj, raw=data, latency_seconds=latency)
         return ProviderResponse(content=msg.get("content") or "", raw=data, latency_seconds=latency)
