@@ -48,9 +48,11 @@ class EpisodeResult(BaseModel):
     db_diff: dict[str, Any]
     agent_messages: list[str]
     failure_reason: str | None = None
+    failure_class: str | None = None
     provider: str | None = None
     model: str | None = None
     turns: int = 0
     tool_calls: int = 0
     invalid_tool_calls: int = 0
     latency_seconds: float | None = None
+    debug_metadata: dict[str, Any] = Field(default_factory=dict)

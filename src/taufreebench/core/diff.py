@@ -59,3 +59,53 @@ def _diff_list(expected: list, actual: list, path: str) -> dict | None:
 
 def diffs_are_empty(diff: dict[str, Any]) -> bool:
     return not bool(diff)
+
+
+def compact_diff_summary(diff: dict[str, Any]) -> dict[str, Any]:
+    """Produce a compact human-readable summary of a DB diff."""
+    if not diff:
+        return {"clean": True}
+
+    changed_tables: list[str] = []
+    mismatched_values = 0
+    missing_keys = 0
+    extra_keys = 0
+    changed_paths: list[str] = []
+
+    def _walk(d: Any, prefix: str = "") -> None:
+        nonlocal mismatched_values, missing_keys, extra_keys
+        if not isinstance(d, dict):
+            return
+        typ = d.get("type")
+        if typ == "value_mismatch" or typ == "type_mismatch":
+            mismatched_values += 1
+            if len(changed_paths) < 10:
+                changed_paths.append(d.get("path", prefix))
+        elif typ == "missing_key":
+            missing_keys += 1
+            if len(changed_paths) < 10:
+                changed_paths.append(f"{prefix} [missing]")
+        elif typ == "extra_key":
+            extra_keys += 1
+            if len(changed_paths) < 10:
+                changed_paths.append(f"{prefix} [extra]")
+        elif typ == "list_mismatch":
+            mismatched_values += 1
+            if len(changed_paths) < 10:
+                changed_paths.append(d.get("path", prefix))
+        else:
+            for k, v in d.items():
+                _walk(v, prefix=f"{prefix}.{k}" if prefix else k)
+
+    for table, sub in diff.items():
+        changed_tables.append(table)
+        _walk(sub, prefix=table)
+
+    return {
+        "clean": False,
+        "changed_tables": changed_tables,
+        "mismatched_values": mismatched_values,
+        "missing_keys": missing_keys,
+        "extra_keys": extra_keys,
+        "first_changed_paths": changed_paths[:10],
+    }

@@ -32,6 +32,8 @@ class RuleBasedRetailAgent(BaseAgent):
         self._tool_results: dict[str, Any] = {}
         self._completed_order_ids: set[str] = set()
         self._turn = 0
+        self._stored_address: dict[str, str] | None = None
+        self._compound_address_done: bool = False
 
     def act(
         self,
@@ -74,6 +76,17 @@ class RuleBasedRetailAgent(BaseAgent):
             return self._plan_action(history)
 
         if self._state == self._S_CONFIRM:
+            # Allow user to refine specific item IDs during confirmation (e.g. partial return)
+            if self._pending_action and self._pending_action.name == "return_delivered_order_items":
+                order = self._tool_results.get("order", {})
+                order_items = order.get("items", []) if isinstance(order, dict) else []
+                specific = self._extract_specific_item_ids(last_user, order_items)
+                if specific:
+                    self._pending_action = ToolCall(
+                        name=self._pending_action.name,
+                        arguments={**self._pending_action.arguments, "item_ids": specific},
+                    )
+                    self._pending_description = f"return {specific} from order {self._order_id}"
             if self._user_confirmed(last_user):
                 if self._pending_action:
                     self._state = self._S_DONE
@@ -145,12 +158,29 @@ class RuleBasedRetailAgent(BaseAgent):
             order_id = parsed.get("order_id", self._order_id) if isinstance(parsed, dict) else self._order_id
             if self._order_id:
                 self._completed_order_ids.add(self._order_id)
+            # Compound address flow: mark complete, signal done
+            if self._intent == "modify_both_addresses":
+                self._compound_address_done = True
+                self._intent = None
+                self._state = self._S_DONE
+                return AgentMessage(
+                    content=f"Both your profile address and the shipping address for order {order_id} "
+                            f"have been updated successfully. Is there anything else I can help with?"
+                )
             self._state = self._S_UNDERSTAND
             return AgentMessage(content=f"The shipping address for order {order_id} has been updated successfully.")
 
         if tool_name == "modify_user_address":
             if is_error:
                 return AgentMessage(content=f"I couldn't update your address. {error_msg}")
+            # Compound address flow: automatically update order shipping address too
+            if self._intent == "modify_both_addresses" and self._order_id and self._stored_address:
+                return ToolCall(
+                    name="modify_pending_order_address",
+                    arguments={"order_id": self._order_id, **self._stored_address},
+                )
+            # Simple case: reset intent so next turn re-detects correctly
+            self._intent = None
             self._state = self._S_UNDERSTAND
             return AgentMessage(content="Your profile address has been updated successfully.")
 
@@ -236,6 +266,32 @@ class RuleBasedRetailAgent(BaseAgent):
         if self._intent == "modify_order_address" and self._order_id:
             return ToolCall(name="get_order_details", arguments={"order_id": self._order_id})
 
+        if self._intent == "modify_both_addresses" and self._user_id:
+            # Both profile address + order shipping address update
+            if self._compound_address_done:
+                self._state = self._S_DONE
+                return AgentMessage(content="Both your profile address and the order's shipping address have been updated. Is there anything else I can help with?")
+            new_addr = self._extract_address(all_user_text_orig)
+            order_id = self._extract_order_id(all_user_text_orig)
+            if new_addr and order_id:
+                self._order_id = order_id
+                self._stored_address = new_addr
+                self._pending_action = ToolCall(
+                    name="modify_user_address",
+                    arguments={"user_id": self._user_id, **new_addr},
+                )
+                self._pending_description = (
+                    f"update your profile address and order {order_id} shipping address to "
+                    f"{new_addr['address1']}, {new_addr['city']}, {new_addr['state']} {new_addr['zip']}"
+                )
+                self._state = self._S_CONFIRM
+                return AgentMessage(
+                    content=f"I'll update both your profile address and the shipping address for order {order_id} to: "
+                            f"{new_addr['address1']}, {new_addr['city']}, {new_addr['state']} {new_addr['zip']}, {new_addr['country']}. "
+                            f"Shall I proceed?"
+                )
+            return AgentMessage(content="Please provide the new address.")
+
         if self._intent == "modify_user_address" and self._user_id:
             new_addr = self._extract_address(all_user_text_orig)
             if new_addr:
@@ -288,17 +344,19 @@ class RuleBasedRetailAgent(BaseAgent):
             if status != "delivered":
                 return AgentMessage(content=f"I'm sorry, order {order_id} has status '{status}'. Only delivered orders can be returned.")
             items = order.get("items", [])
-            item_ids = [i["item_id"] for i in items]
+            all_item_ids = [i["item_id"] for i in items]
+            # Use specific items if user mentioned them in their messages (handles partial returns)
+            specific = self._extract_specific_item_ids(all_user_text_orig, items)
+            item_ids = specific if specific else all_item_ids
             payment_id = self._extract_payment_method(all_user_text, order)
             if not payment_id:
-                # Use original payment method
                 hist = order.get("payment_history", [])
                 payment_id = hist[0]["payment_method_id"] if hist else ""
             self._pending_action = ToolCall(
                 name="return_delivered_order_items",
                 arguments={"order_id": order_id, "item_ids": item_ids, "payment_method_id": payment_id},
             )
-            self._pending_description = f"I will return items from order {order_id} and refund to {payment_id}"
+            self._pending_description = f"I will return {item_ids} from order {order_id} and refund to {payment_id}"
             self._state = self._S_CONFIRM
             return AgentMessage(content=f"I'll process a return for order {order_id}. The refund will go to payment method {payment_id}. Shall I proceed?")
 
@@ -490,6 +548,8 @@ class RuleBasedRetailAgent(BaseAgent):
             self._intent = "return"
         elif any(w in t for w in ["exchange", "swap"]):
             self._intent = "exchange"
+        elif ("both" in t and "address" in t and has_order) or ("profile address" in t and "shipping address" in t and has_order):
+            self._intent = "modify_both_addresses"
         elif any(w in t for w in ["shipping address", "delivery address", "ship to", "address for order", "address for my order", "new address"]) and has_order:
             self._intent = "modify_order_address"
         elif any(w in t for w in ["my address", "profile address", "update my address", "change my address"]) and not has_order:
@@ -604,6 +664,12 @@ class RuleBasedRetailAgent(BaseAgent):
         while len(new_ids) < len(old_items):
             new_ids.append(new_ids[-1])
         return new_ids[:len(old_items)]
+
+    def _extract_specific_item_ids(self, text: str, order_items: list[dict[str, Any]]) -> list[str]:
+        """Return item IDs mentioned in text that are present in the order."""
+        order_item_ids = {i["item_id"] for i in order_items}
+        mentioned = re.findall(r"item_\w+", text)
+        return [iid for iid in mentioned if iid in order_item_ids]
 
     def _user_confirmed(self, text: str) -> bool:
         t = text.lower().strip()
