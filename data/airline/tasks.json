@@ -1,0 +1,20 @@
+[
+  {
+    "id": "airline_task_001",
+    "instruction": "You are Alex Reed (email: alex.reed@example.com). You want to cancel your flight reservation #R5501234.",
+    "expected_actions": [
+      {"name": "cancel_reservation", "arguments": {"reservation_id": "#R5501234"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 15,
+    "tags": ["cancel", "reservation"]
+  },
+  {
+    "id": "airline_task_002",
+    "instruction": "You are Nina Walsh (email: nina.walsh@example.com). You want to look up your reservation #R5502345 and ask about the flight details.",
+    "expected_actions": [],
+    "required_outputs": ["MIA", "JFK"],
+    "max_turns": 10,
+    "tags": ["lookup", "read_only"]
+  }
+]

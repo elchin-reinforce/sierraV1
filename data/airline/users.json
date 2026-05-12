@@ -1,0 +1,23 @@
+{
+  "alex_reed_5511": {
+    "user_id": "alex_reed_5511",
+    "first_name": "Alex",
+    "last_name": "Reed",
+    "email": "alex.reed@example.com",
+    "address": {"address1": "10 Airport Rd", "city": "Boston", "state": "MA", "country": "USA", "zip": "02108"},
+    "payment_methods": {
+      "credit_card_1122334": {"type": "credit_card", "id": "credit_card_1122334", "last_four": "1234"},
+      "travel_credit_9988": {"type": "travel_credit", "id": "travel_credit_9988", "balance": 200.00}
+    }
+  },
+  "nina_walsh_8844": {
+    "user_id": "nina_walsh_8844",
+    "first_name": "Nina",
+    "last_name": "Walsh",
+    "email": "nina.walsh@example.com",
+    "address": {"address1": "5 Ocean Dr", "city": "Miami", "state": "FL", "country": "USA", "zip": "33101"},
+    "payment_methods": {
+      "credit_card_5566778": {"type": "credit_card", "id": "credit_card_5566778", "last_four": "5678"}
+    }
+  }
+}
