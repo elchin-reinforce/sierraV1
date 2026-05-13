@@ -25,12 +25,14 @@ A clean-room educational reimplementation of τ-bench — a benchmark for evalua
 
 ### Mode 3 — LLM agent + LLM user (closest to paper)
 
+Same user simulator (`llama3.1:8b`) across both rows — direct agent comparison:
+
 | Agent | User sim | Tasks | Trials | pass^1 | pass@3 | Run |
 |-------|----------|-------|--------|--------|--------|-----|
-| gpt-5.2 (OpenAI) | gpt-5.2 | 25 | 3 | **0.147** | 0.160 | [20260512_164757](runs/20260512_164757/report.md) |
-| qwen3:8b (Ollama, local) | llama3.1:8b | 25 | 3 | **0.120** | 0.200 | [20260512_152713](runs/20260512_152713/report.md) |
+| **gpt-5.2** (OpenAI) | llama3.1:8b | 25 | 3 | **0.227** | **0.440** | [20260512_172751](runs/20260512_172751/report.md) |
+| qwen3:8b (Ollama, local) | llama3.1:8b | 25 | 3 | 0.120 | 0.200 | [20260512_152713](runs/20260512_152713/report.md) |
 
-> Note: user simulators differ between runs, so the comparison is not strictly apples-to-apples. The paper's methodology uses a single user simulator across all agents.
+For reference, gpt-5.2 also self-played: gpt-5.2 agent + gpt-5.2 user → pass^1 = 0.147, pass@3 = 0.160 ([run](runs/20260512_164757/report.md)). The stricter user simulator brings the score down.
 
 ### Mode 1 — Rule-based + scripted (sanity check, not an LLM score)
 
