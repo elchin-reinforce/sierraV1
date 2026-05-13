@@ -36,10 +36,11 @@ class OpenAIUser(BaseUser):
         return self._complete()
 
     def _complete(self) -> str:
+        # User simulator runs at T=1.0 to match the τ-bench paper setup.
         response = self._client.chat.completions.create(
             model=self._model,
             messages=self._history,
-            temperature=0.3,
+            temperature=1.0,
         )
         reply = response.choices[0].message.content or ""
         self._history.append({"role": "assistant", "content": reply})

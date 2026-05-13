@@ -55,9 +55,11 @@ class AnthropicProvider(ChatProvider):
         kwargs: dict[str, Any] = {
             "model": self.model,
             "max_tokens": 4096,
-            "temperature": temperature,
             "messages": chat_messages,
         }
+        # Newer Claude models (Opus 4.7+) deprecated the temperature parameter.
+        if not _is_temperature_deprecated(self.model):
+            kwargs["temperature"] = temperature
         if system_text:
             kwargs["system"] = system_text
         if tools:
@@ -109,6 +111,12 @@ class AnthropicProvider(ChatProvider):
             return ProviderResponse(tool_call=tc_obj, raw={}, latency_seconds=latency)
 
         return ProviderResponse(content="".join(text_parts), raw={}, latency_seconds=latency)
+
+
+def _is_temperature_deprecated(model: str) -> bool:
+    m = model.lower()
+    # Anthropic deprecated `temperature` starting with Opus 4.7.
+    return "opus-4-7" in m or "opus-4.7" in m
 
 
 def _to_anthropic_tool(schema: dict[str, Any]) -> dict[str, Any]:

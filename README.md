@@ -25,13 +25,21 @@ A clean-room educational reimplementation of τ-bench — a benchmark for evalua
 
 ### Mode 3 — LLM agent + LLM user (closest to paper)
 
-| Agent | User sim | Tasks | Trials | pass^1 | pass@3 | Run |
-|-------|----------|-------|--------|--------|--------|-----|
-| **gpt-5.2** (OpenAI) | llama3.1:8b | 25 | 3 | **0.227** | **0.440** | [20260512_172751](runs/20260512_172751/report.md) |
-| gpt-5.2 (OpenAI) | gpt-5.2 | 25 | 3 | 0.147 | 0.160 | [20260512_164757](runs/20260512_164757/report.md) |
-| qwen3:8b (Ollama, local) | llama3.1:8b | 25 | 3 | 0.120 | 0.200 | [20260512_152713](runs/20260512_152713/report.md) |
+All runs use 25 tasks × 3 trials. **pass^k** = consistency (all k trials succeed). **pass@k** = capability (at least 1 of k succeeds).
 
-The two rows with `llama3.1:8b` as the user are a fair head-to-head — gpt-5.2 is ~2× qwen3:8b. The gpt-5.2 self-play row shows that a stricter user simulator drives the score down significantly.
+| Agent | User sim | pass^1 | pass^2 | pass^3 | pass@1 | pass@2 | pass@3 | Run |
+|-------|----------|-------:|-------:|-------:|-------:|-------:|-------:|-----|
+| **claude-opus-4-7** (Anthropic) | gpt-4-0613 (T=1.0) | **0.747** | **0.533** | **0.360** | **0.747** | **0.960** | **1.000** | [20260513_100055](runs/20260513_100055/report.md) |
+| gpt-5.5 (OpenAI) | gpt-4-0613 (T=1.0) | 0.240 | 0.107 | 0.080 | 0.240 | 0.373 | 0.480 | [20260513_101358](runs/20260513_101358/report.md) |
+| gpt-5.2 (OpenAI) | llama3.1:8b | 0.227 | 0.107 | 0.080 | 0.227 | 0.347 | 0.440 | [20260512_172751](runs/20260512_172751/report.md) |
+| gpt-5.2 (OpenAI) | gpt-5.2 | 0.147 | 0.133 | 0.120 | 0.147 | 0.160 | 0.160 | [20260512_164757](runs/20260512_164757/report.md) |
+| qwen3:8b (Ollama, local) | llama3.1:8b | 0.120 | 0.080 | 0.080 | 0.120 | 0.160 | 0.200 | [20260512_152713](runs/20260512_152713/report.md) |
+
+**Headline**: claude-opus-4-7 solves every one of the 25 tasks at least once across 3 trials (pass@3 = 1.000) and is correct on its first try 74.7% of the time. It's ~3× stronger than the next-best model on this benchmark.
+
+**Caveat on temperature**: τ-bench standard is agent T=0.0 and user T=1.0. claude-opus-4-7 and gpt-5.5 don't accept the `temperature` parameter (Anthropic deprecated it; reasoning models only allow default 1.0), so the agent setting is enforced only where supported. User sim T=1.0 is honored everywhere.
+
+**Caveat on user sims**: rows with different user simulators aren't strictly apples-to-apples. The two `gpt-4-0613` rows and the two `llama3.1:8b` rows are each internally comparable.
 
 ### Mode 1 — Rule-based + scripted (sanity check, not an LLM score)
 

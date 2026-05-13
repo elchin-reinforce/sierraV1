@@ -44,8 +44,10 @@ class OpenAIProvider(ChatProvider):
         kwargs: dict[str, Any] = {
             "model": self.model,
             "messages": messages,
-            "temperature": temperature,
         }
+        # Reasoning models (gpt-5*, o1*, o3*) only support default temperature.
+        if not _is_reasoning_model(self.model):
+            kwargs["temperature"] = temperature
         if tools:
             kwargs["tools"] = [{"type": "function", "function": t} for t in tools]
             kwargs["tool_choice"] = "auto"
@@ -84,3 +86,8 @@ class OpenAIProvider(ChatProvider):
             }
             return ProviderResponse(tool_call=tc_obj, raw={}, latency_seconds=latency)
         return ProviderResponse(content=msg.content or "", raw={}, latency_seconds=latency)
+
+
+def _is_reasoning_model(model: str) -> bool:
+    m = model.lower()
+    return m.startswith("gpt-5") or m.startswith("o1") or m.startswith("o3") or m.startswith("o4")
