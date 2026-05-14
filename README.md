@@ -23,33 +23,36 @@ A clean-room educational reimplementation of τ-bench — a benchmark for evalua
 
 ## Benchmark Results
 
-### Mode 3 — LLM agent + LLM user (closest to paper)
+**pass^k** = consistency (all k trials succeed). **pass@k** = capability (at least one of k succeeds).
+Both V1 and V2 use `gpt-4-0613` at T=1.0 as the LLM user simulator (paper standard). Agent runs at T=0.0 where the model accepts it (claude-opus-4-7 and gpt-5.5 don't accept the parameter — they use the API default).
 
-All runs use 25 tasks × 3 trials. **pass^k** = consistency (all k trials succeed). **pass@k** = capability (at least 1 of k succeeds).
+### V1 — τ-bench-style retail (single-control, 25 tasks × 3 trials)
 
-| Agent | User sim | pass^1 | pass^2 | pass^3 | pass@1 | pass@2 | pass@3 | Run |
-|-------|----------|-------:|-------:|-------:|-------:|-------:|-------:|-----|
-| **claude-opus-4-7** (Anthropic) | gpt-4-0613 (T=1.0) | **0.947** | **0.907** | **0.880** | **0.947** | **0.987** | **1.000** | [20260513_123357](runs/20260513_123357/report.md) |
-| **gpt-5.5** (OpenAI) | gpt-4-0613 (T=1.0) | **0.947** | **0.907** | **0.880** | **0.947** | **0.987** | **1.000** | [20260513_124650](runs/20260513_124650/report.md) |
-| gpt-5.2 (OpenAI) | llama3.1:8b | 0.227 | 0.107 | 0.080 | 0.227 | 0.347 | 0.440 | [20260512_172751](runs/20260512_172751/report.md) |
-| gpt-5.2 (OpenAI) | gpt-5.2 | 0.147 | 0.133 | 0.120 | 0.147 | 0.160 | 0.160 | [20260512_164757](runs/20260512_164757/report.md) |
-| qwen3:8b (Ollama, local) | llama3.1:8b | 0.120 | 0.080 | 0.080 | 0.120 | 0.160 | 0.200 | [20260512_152713](runs/20260512_152713/report.md) |
+| Agent | pass^1 | pass^2 | pass^3 | pass@1 | pass@2 | pass@3 | Run |
+|-------|-------:|-------:|-------:|-------:|-------:|-------:|-----|
+| **claude-opus-4-7** | **0.947** | **0.907** | **0.880** | **0.947** | **0.987** | **1.000** | [20260513_123357](runs/20260513_123357/report.md) |
+| **gpt-5.5** | **0.947** | **0.907** | **0.880** | **0.947** | **0.987** | **1.000** | [20260513_124650](runs/20260513_124650/report.md) |
 
-**Headline**: After fixing a tool-input normalization bug (the `#` prefix on order IDs was rejected when models stripped it), claude-opus-4-7 and gpt-5.5 are **tied at pass^1 = 0.947** on this 25-task benchmark. Both pass 71/75 trials. They diverge on only 2 tasks (and even those differences cancel out). The 25-task V1 benchmark is now saturated for both frontier models — V2 (60 dual-control telecom tasks) is the more discriminating benchmark.
+V1 is saturated for both frontier models (each passes 71/75 trials with identical histograms). The 25-task retail benchmark no longer discriminates between top-tier models — V2 (below) does.
 
-**Earlier results (before the fix) are no longer in the table** — they showed opus 0.747 and gpt-5.5 0.240, a misleading 50-point gap caused entirely by gpt-5.5 stripping the `#` 87% of the time vs opus stripping it 30%. The historical runs are still saved on disk for reproducibility but are not the current "best" numbers for these models. The qwen3:8b and gpt-5.2 rows have not been re-run with the fix yet.
+### V2 — τ²-bench-style telecom dual-control (60 tasks × 3 trials)
 
-**Caveat on temperature**: τ-bench standard is agent T=0.0 and user T=1.0. claude-opus-4-7 and gpt-5.5 don't accept the `temperature` parameter (Anthropic deprecated it; reasoning models only allow default 1.0), so the agent setting is enforced only where supported. User sim T=1.0 is honored everywhere.
+V2 lives in [`tau-benchv2/`](tau-benchv2/). Both agent and user have tools and share an environment. Scores below use Mode 3 (default = LLM agent + LLM user, dual control).
 
-### Mode 1 — Rule-based + scripted (sanity check, not an LLM score)
+| Agent | pass^1 | pass^2 | pass^3 | pass@1 | pass@2 | pass@3 | Run |
+|-------|-------:|-------:|-------:|-------:|-------:|-------:|-----|
+| **claude-opus-4-7** | **0.717** | **0.644** | **0.617** | **0.717** | **0.789** | **0.833** | [tau-benchv2/runs/20260514_115448](tau-benchv2/runs/20260514_115448/report.md) |
+| **gpt-5.5** | 0.656 | 0.606 | 0.583 | 0.656 | 0.706 | 0.733 | [tau-benchv2/runs/20260514_115146](tau-benchv2/runs/20260514_115146/report.md) |
 
-| Agent | Tasks | Trials | pass^1 |
-|-------|-------|--------|--------|
-| Rule-based state machine | 25 | 3 | **1.000** |
+V2 is properly discriminating: a ~6-point gap between opus-4-7 and gpt-5.5 on pass^1, growing to 10 points on pass@3. Both models are well within the useful ~50–80% range where the benchmark can detect real capability differences.
 
-Run: [`runs/20260512_120058/`](runs/20260512_120058/report.md)
-
-> Rule-based pass^1 = 1.000 confirms the pipeline and dataset are correct — it is not a meaningful LLM result.
+**V2 fixes that lifted opus from 0.050 → 0.717:**
+- Inject `device_id`/`line_id`/`customer_id` into the user simulator's hidden instruction (paper-aligned: users know their own phone IDs)
+- Deterministic guardrail: reject premature `###TRANSFER###` unless the agent has actually called the transfer tool AND said the canonical confirmation; up to 2 reprompts
+- Tighter user-simulator prompt (don't pressure agent to escalate; ask clarifying questions)
+- Tighter agent prompt (don't skip diagnostic steps; full MMS workflow explicitly enumerated)
+- Removed policy truncation (agent now sees the full 3,657-char telecom policy)
+- See [tau-benchv2/tests/test_premature_transfer_guard.py](tau-benchv2/tests/test_premature_transfer_guard.py) for 9 unit tests on the transfer guardrail.
 
 ---
 

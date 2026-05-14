@@ -20,6 +20,68 @@ from .types import (
 # Sentinels the user can emit to terminate the conversation.
 STOP_TOKENS = ("###STOP###", "###TRANSFER###", "###OUT-OF-SCOPE###")
 
+# Agent tool names that represent a real transfer-to-human action.
+TRANSFER_TOOL_NAMES = {
+    "transfer_to_human_agent",
+    "transfer_to_human_agents",
+    "transfer",
+}
+
+# Phrases that indicate the agent has actually told the user they are being
+# transferred. The check is case-insensitive and substring-based.
+TRANSFER_MESSAGE_PHRASES = (
+    "you are being transferred",
+    "you're being transferred",
+    "transferring you to a human",
+    "transferring you to an agent",
+    "transferred to a human agent",
+    "transferred to an agent",
+    "i am transferring you",
+    "i'm transferring you",
+    "i am connecting you to a human",
+    "i'm connecting you to a human",
+    "we are transferring you",
+    "we're transferring you",
+)
+
+# Max reprompts allowed when the user emits ###TRANSFER### before the agent
+# has actually performed the transfer protocol. Two attempts per episode.
+MAX_TRANSFER_REPROMPTS = 2
+
+REPROMPT_INSTRUCTION = (
+    "[SYSTEM CORRECTION TO YOU, THE CUSTOMER]: Your previous response incorrectly "
+    "emitted ###TRANSFER###. The support agent has NOT actually transferred you yet. "
+    "You may only emit ###TRANSFER### AFTER the agent has called the transfer tool "
+    "AND told you that you are being transferred to a human agent. "
+    "If the agent merely asked whether you want to be transferred or hinted at "
+    "escalation, answer them naturally — for example: 'Yes, please transfer me.' "
+    "Continue the conversation as the customer. Do not emit any terminal token "
+    "unless the scenario goal is truly complete."
+)
+
+
+def _has_agent_completed_transfer(trajectory) -> bool:
+    """Return True iff the trajectory shows the agent both:
+       1. called a transfer tool, AND
+       2. sent a natural-language confirmation that the user is being transferred.
+
+    Used to validate ###TRANSFER### from the user simulator.
+    """
+    saw_transfer_tool = False
+    saw_transfer_message = False
+    for step in trajectory:
+        role = getattr(step, "role", None)
+        content = getattr(step, "content", None)
+        if role == "agent_tool" and isinstance(content, dict):
+            name = content.get("name") or content.get("tool") or ""
+            if name in TRANSFER_TOOL_NAMES:
+                saw_transfer_tool = True
+        elif role == "agent" and isinstance(content, dict):
+            text = (content.get("content") or "").lower()
+            if any(phrase in text for phrase in TRANSFER_MESSAGE_PHRASES):
+                saw_transfer_message = True
+    return saw_transfer_tool and saw_transfer_message
+
 
 class DualControlEnvironment:
     """Runs a dual-control episode: agent ↔ user, both with tools."""
@@ -88,7 +150,18 @@ class DualControlEnvironment:
                 metadata={"event": "ticket_open"},
             ))
         else:
-            opening = self.user_simulator.start(self.task.instruction)
+            # Paper-aligned: the user knows its own device_id, line_id, and
+            # customer_id (these are personal context, like knowing your own
+            # phone). Inject them into the hidden instruction so user-side
+            # tools (which require those IDs) can be called correctly.
+            id_context = (
+                f"YOUR ACCOUNT CONTEXT (pass these exact IDs to user tools):\n"
+                f"- device_id: {self.task.device_id}\n"
+                f"- line_id: {self.task.line_id}\n"
+                f"- customer_id: {self.task.customer_id}\n\n"
+            )
+            full_instruction = id_context + self.task.instruction
+            opening = self.user_simulator.start(full_instruction)
             user_messages.append(opening)
             agent_history.append({"role": "user", "content": opening})
             user_history.append({"role": "assistant", "content": opening})
@@ -185,6 +258,7 @@ class DualControlEnvironment:
                 # The user may call tools first, then send a message. Loop until
                 # the user actually emits a message (or until we hit a safety cap).
                 user_tool_budget = 6  # max sequential tool calls in one user turn
+                reprompt_count = getattr(self, "_reprompt_count", 0)
                 got_user_message = False
                 _stopped = False
                 while user_tool_budget > 0:
@@ -220,16 +294,64 @@ class DualControlEnvironment:
                         continue
 
                     if isinstance(user_action, DualMessage):
+                        content = user_action.content
+                        # Deterministic guardrail: reject ###TRANSFER### unless
+                        # the agent has actually performed the transfer protocol.
+                        is_transfer = "###TRANSFER###" in content
+                        if is_transfer and not _has_agent_completed_transfer(trajectory):
+                            # Premature transfer — log and reprompt (or fail if past limit).
+                            trajectory.append(DualTrajectoryStep(
+                                role="environment",
+                                content={
+                                    "event": "invalid_premature_transfer",
+                                    "raw_user_output": content,
+                                    "agent_last_message": agent_messages[-1] if agent_messages else None,
+                                    "transfer_tool_seen": False,
+                                    "transfer_message_seen": False,
+                                    "reprompt_attempt": reprompt_count + 1,
+                                },
+                                visible_to_agent=False,
+                                visible_to_user=False,
+                                metadata={"event_type": "premature_transfer"},
+                            ))
+                            if reprompt_count < MAX_TRANSFER_REPROMPTS:
+                                reprompt_count += 1
+                                self._reprompt_count = reprompt_count
+                                # Inject a corrective "agent-like" message so the
+                                # user simulator sees the correction on its next turn.
+                                user_history.append({
+                                    "role": "user",
+                                    "content": REPROMPT_INSTRUCTION,
+                                })
+                                # Loop again to give the user another chance.
+                                continue
+                            else:
+                                # Exceeded reprompts — accept termination but classify
+                                # explicitly as a simulator-side premature failure.
+                                got_user_message = True
+                                user_messages.append(content)
+                                user_history.append({"role": "assistant", "content": content})
+                                agent_history.append({"role": "user", "content": content})
+                                trajectory.append(DualTrajectoryStep(
+                                    role="user", content={"content": content},
+                                    visible_to_agent=True, visible_to_user=True,
+                                    metadata={"outcome": "premature_transfer_after_reprompt"},
+                                ))
+                                failure_reason = "premature_transfer_after_reprompt"
+                                _stopped = True
+                                break
+
+                        # Normal acceptance path
                         got_user_message = True
-                        user_messages.append(user_action.content)
-                        user_history.append({"role": "assistant", "content": user_action.content})
-                        agent_history.append({"role": "user", "content": user_action.content})
+                        user_messages.append(content)
+                        user_history.append({"role": "assistant", "content": content})
+                        agent_history.append({"role": "user", "content": content})
                         trajectory.append(DualTrajectoryStep(
-                            role="user", content={"content": user_action.content},
+                            role="user", content={"content": content},
                             visible_to_agent=True, visible_to_user=True,
                         ))
-                        if any(token in user_action.content for token in STOP_TOKENS):
-                            failure_reason = self._sentinel_reason(user_action.content)
+                        if any(token in content for token in STOP_TOKENS):
+                            failure_reason = self._sentinel_reason(content)
                             _stopped = True
                         break
 

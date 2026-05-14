@@ -15,7 +15,7 @@ class OllamaDualToolAgent(BaseDualAgent):
         self.model = self._provider.model
 
     def act(self, history, tools, policy) -> "DualMessage | DualToolCall":
-        system = DUAL_AGENT_SYSTEM_TEMPLATE.format(policy=(policy or "")[:2500])
+        system = DUAL_AGENT_SYSTEM_TEMPLATE.format(policy=policy or "")
         messages: list[dict[str, Any]] = [{"role": "system", "content": system}] + list(history)
         resp = self._provider.chat(messages, tools=tools, temperature=0.0)
         if resp.tool_call:

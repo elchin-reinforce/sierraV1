@@ -21,6 +21,20 @@ def _devices(user_db: dict[str, Any]) -> dict[str, Any]:
     return user_db.setdefault("devices", {})
 
 
+def _resolve_device_id(user_db: dict[str, Any], device_id: Any) -> str | None:
+    """Return a valid device_id, falling back to the episode's active device
+    when the caller passes nothing useful. Matches the paper's design: user
+    tools implicitly operate on "your phone" without needing an explicit id.
+    """
+    devices = _devices(user_db)
+    if isinstance(device_id, str) and device_id in devices:
+        return device_id
+    active = user_db.get("_active_device_id")
+    if active and active in devices:
+        return active
+    return device_id if isinstance(device_id, str) else None
+
+
 def _lines(agent_db: dict[str, Any]) -> dict[str, Any]:
     return agent_db.setdefault("lines", {})
 
@@ -30,7 +44,17 @@ def _plans(agent_db: dict[str, Any]) -> dict[str, Any]:
 
 
 def _get_device(user_db: dict[str, Any], device_id: str) -> dict[str, Any] | None:
-    return _devices(user_db).get(device_id)
+    devices = _devices(user_db)
+    direct = devices.get(device_id)
+    if direct is not None:
+        return direct
+    # Defensive: if caller passed an invalid id (LLM hallucinated), fall back
+    # to the user's active device for this episode. Paper-aligned: user tools
+    # implicitly operate on the user's phone.
+    active_id = user_db.get("_active_device_id")
+    if active_id:
+        return devices.get(active_id)
+    return None
 
 
 def _get_line_for_device(agent_db: dict[str, Any], device: dict[str, Any]) -> dict[str, Any]:

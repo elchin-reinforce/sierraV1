@@ -113,6 +113,13 @@ def run_dual_episode_for_task(
     # Inject the issue described by each subtask into a fresh dbs snapshot.
     apply_initializers(task, agent_db, user_db)
 
+    # Bind the user's active device for this episode. User tools resolve to
+    # this device when called without (or with an invalid) device_id, matching
+    # the paper's model where user tools operate implicitly on "your phone".
+    user_db["_active_device_id"] = task.device_id
+    user_db["_active_line_id"] = task.line_id
+    user_db["_active_customer_id"] = task.customer_id
+
     from taufreebench.domains.telecom.agent_tools import AGENT_TOOLS
     from taufreebench.domains.telecom.user_tools import USER_TOOLS
 
