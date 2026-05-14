@@ -71,6 +71,9 @@ def _make_dual_agent(agent_type: str, agent_model: str | None = None):
     if agent_type == "anthropic":
         from taufreebench.agents.anthropic_dual_tool_agent import AnthropicDualToolAgent
         return AnthropicDualToolAgent(model=agent_model)
+    if agent_type == "deepinfra":
+        from taufreebench.agents.deepinfra_dual_tool_agent import DeepInfraDualToolAgent
+        return DeepInfraDualToolAgent(model=agent_model)
     raise ValueError(f"Unknown dual agent type: {agent_type}")
 
 

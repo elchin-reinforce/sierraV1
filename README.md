@@ -24,7 +24,7 @@ A clean-room educational reimplementation of τ-bench — a benchmark for evalua
 ## Benchmark Results
 
 **pass^k** = consistency (all k trials succeed). **pass@k** = capability (at least one of k succeeds).
-Both V1 and V2 use `gpt-4-0613` at T=1.0 as the LLM user simulator (paper standard). Agent runs at T=0.0 where the model accepts it (claude-opus-4-7 and gpt-5.5 don't accept the parameter — they use the API default).
+V1 uses `gpt-4-0613` at T=1.0 as the LLM user simulator (paper standard). V2 uses `gpt-5.2` at T=1.0 for the user simulator (stronger sim → harder benchmark, apples-to-apples across all agents). Agent runs at T=0.0 where the model accepts it; otherwise API default. DeepInfra agents run with `reasoning_effort=high` where supported.
 
 ### V1 — τ-bench-style retail (single-control, 25 tasks × 3 trials)
 
@@ -35,16 +35,19 @@ Both V1 and V2 use `gpt-4-0613` at T=1.0 as the LLM user simulator (paper standa
 
 V1 is saturated for both frontier models (each passes 71/75 trials with identical histograms). The 25-task retail benchmark no longer discriminates between top-tier models — V2 (below) does.
 
-### V2 — τ²-bench-style telecom dual-control (60 tasks × 3 trials)
+### V2 — τ²-bench-style telecom dual-control (60 tasks × 3 trials, gpt-5.2 user sim)
 
 V2 lives in [`tau-benchv2/`](tau-benchv2/). Both agent and user have tools and share an environment. Scores below use Mode 3 (default = LLM agent + LLM user, dual control).
 
 | Agent | pass^1 | pass^2 | pass^3 | pass@1 | pass@2 | pass@3 | Run |
 |-------|-------:|-------:|-------:|-------:|-------:|-------:|-----|
-| **claude-opus-4-7** | **0.717** | **0.644** | **0.617** | **0.717** | **0.789** | **0.833** | [tau-benchv2/runs/20260514_115448](tau-benchv2/runs/20260514_115448/report.md) |
-| **gpt-5.5** | 0.656 | 0.606 | 0.583 | 0.656 | 0.706 | 0.733 | [tau-benchv2/runs/20260514_115146](tau-benchv2/runs/20260514_115146/report.md) |
+| **claude-opus-4-7** | **0.722** | 0.672 | 0.633 | 0.722 | 0.772 | 0.783 | [tau-benchv2/runs/20260514_155452](tau-benchv2/runs/20260514_155452/report.md) |
+| **DeepSeek-V4-Pro** | **0.722** | **0.683** | **0.650** | 0.722 | 0.761 | 0.767 | [tau-benchv2/runs/20260514_153444](tau-benchv2/runs/20260514_153444/report.md) |
+| **GLM-5** | 0.717 | 0.672 | **0.650** | 0.717 | 0.761 | 0.783 | [tau-benchv2/runs/20260514_151120](tau-benchv2/runs/20260514_151120/report.md) |
+| gpt-5.5 | 0.672 | 0.633 | 0.600 | 0.672 | 0.711 | 0.717 | [tau-benchv2/runs/20260514_155534](tau-benchv2/runs/20260514_155534/report.md) |
+| Qwen3-235B-A22B-Thinking | 0.661 | 0.567 | 0.500 | 0.661 | 0.756 | 0.783 | [tau-benchv2/runs/20260514_163439](tau-benchv2/runs/20260514_163439/report.md) |
 
-V2 is properly discriminating: a ~6-point gap between opus-4-7 and gpt-5.5 on pass^1, growing to 10 points on pass@3. Both models are well within the useful ~50–80% range where the benchmark can detect real capability differences.
+All five models are tightly clustered (0.661–0.722 pass^1). Claude-opus-4-7 and DeepSeek-V4-Pro tie at the top on pass^1. Qwen3-Thinking has the largest gap between pass^1 (0.661) and pass@3 (0.783) — high capability but low consistency, characteristic of high-temperature reasoning models. The honest per-task 95% CI is roughly ±0.11, so the model ordering is not statistically separated at n=60 tasks × 3 trials.
 
 **V2 fixes that lifted opus from 0.050 → 0.717:**
 - Inject `device_id`/`line_id`/`customer_id` into the user simulator's hidden instruction (paper-aligned: users know their own phone IDs)
