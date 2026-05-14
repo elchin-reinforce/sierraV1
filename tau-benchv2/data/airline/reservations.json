@@ -1,0 +1,22 @@
+{
+  "#R5501234": {
+    "reservation_id": "#R5501234",
+    "user_id": "alex_reed_5511",
+    "flight_id": "FL1001",
+    "seat_class": "economy",
+    "status": "confirmed",
+    "payment_method_id": "credit_card_1122334",
+    "amount_paid": 299.00,
+    "created_at": "2024-02-01"
+  },
+  "#R5502345": {
+    "reservation_id": "#R5502345",
+    "user_id": "nina_walsh_8844",
+    "flight_id": "FL2001",
+    "seat_class": "business",
+    "status": "confirmed",
+    "payment_method_id": "credit_card_5566778",
+    "amount_paid": 489.00,
+    "created_at": "2024-02-05"
+  }
+}

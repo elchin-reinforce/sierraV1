@@ -1,0 +1,4733 @@
+[
+  {
+    "id": "telecom_001",
+    "issue_type": "service_issue",
+    "instruction": "You are Lucas, a customer calling phone support. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +16025550114 and email lucas.taylor@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_014",
+          "bill_id": "bill_026",
+          "payment_method_id": "pm_016",
+          "amount": 60.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_020",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_020"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_014",
+          "bill_id": "bill_026"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_020"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "billing",
+      "service",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "resume_suspended_line"
+      ],
+      "who_acts": "agent",
+      "persona": "none"
+    },
+    "line_id": "line_020",
+    "customer_id": "cust_014",
+    "device_id": "device_020"
+  },
+  {
+    "id": "telecom_002",
+    "issue_type": "service_issue",
+    "instruction": "You are Henry, a customer calling phone support. My phone is showing 'No SIM' and I can't make calls. When asked to authenticate, provide your phone number +12155550116 and email henry.white@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "sim_unseated"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "reseat_sim_card",
+        "arguments": {
+          "device_id": "device_024"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_024"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "service",
+      "sim"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "sim_unseated"
+      ],
+      "required_tools": [
+        "reseat_sim_card"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_024",
+    "customer_id": "cust_016",
+    "device_id": "device_024"
+  },
+  {
+    "id": "telecom_003",
+    "issue_type": "mms_issue",
+    "instruction": "You are Sofia, a customer calling phone support. My picture messages don't send. I think my data was off too. When asked to authenticate, provide your phone number +16465550127 and email sofia.hall@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "mms_requires_mobile_data_fix_first"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_040",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_040",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_040"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_040"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "mobile_data"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "mms_requires_mobile_data_fix_first"
+      ],
+      "required_tools": [
+        "grant_app_permission",
+        "toggle_mobile_data"
+      ],
+      "who_acts": "user",
+      "persona": "hard"
+    },
+    "line_id": "line_040",
+    "customer_id": "cust_027",
+    "device_id": "device_040"
+  },
+  {
+    "id": "telecom_004",
+    "issue_type": "service_issue",
+    "instruction": "You are Mason, a customer calling phone support. I have no service at all on my phone \u2014 no bars in the corner. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +13035550108 and email mason.davis@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "airplane_mode_on",
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_008",
+          "bill_id": "bill_015",
+          "payment_method_id": "pm_009",
+          "amount": 85.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_012",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_012",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_012"
+        }
+      },
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_012"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_008",
+          "bill_id": "bill_015"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_012"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "airplane_mode",
+      "billing",
+      "service",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "airplane_mode_on",
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "resume_suspended_line",
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "both",
+      "persona": "none"
+    },
+    "line_id": "line_012",
+    "customer_id": "cust_008",
+    "device_id": "device_012"
+  },
+  {
+    "id": "telecom_005",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Alexander, a customer calling phone support. I'm traveling abroad and my mobile data doesn't work, even though my plan supports it. My phone says 2G in the corner and pages won't load. When asked to authenticate, provide your phone number +19495550118 and email alexander.martin@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "device_roaming_off",
+      "network_mode_2g"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_device_roaming",
+        "arguments": {
+          "device_id": "device_027",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "switch_network_mode",
+        "arguments": {
+          "device_id": "device_027",
+          "network_type": "4G"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_device_roaming_enabled",
+        "arguments": {
+          "device_id": "device_027"
+        }
+      },
+      {
+        "name": "assert_network_type_not_2g",
+        "arguments": {
+          "device_id": "device_027"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_027",
+          "min_label": "medium"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "network_mode",
+      "roaming",
+      "slow_data"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "device_roaming_off",
+        "network_mode_2g"
+      ],
+      "required_tools": [
+        "switch_network_mode",
+        "toggle_device_roaming"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_027",
+    "customer_id": "cust_018",
+    "device_id": "device_027"
+  },
+  {
+    "id": "telecom_006",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Mason, a customer calling phone support. My internet stopped working and I think I may have used up my data. When asked to authenticate, provide your phone number +13035550108 and email mason.davis@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "data_limit_reached_refuel_required"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "add_data_refuel",
+        "arguments": {
+          "line_id": "line_011",
+          "gb_amount": 5.0,
+          "payment_method_id": "pm_009"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_011"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "data_cap",
+      "refuel"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "data_limit_reached_refuel_required"
+      ],
+      "required_tools": [
+        "add_data_refuel"
+      ],
+      "who_acts": "agent",
+      "persona": "hard"
+    },
+    "line_id": "line_011",
+    "customer_id": "cust_008",
+    "device_id": "device_011"
+  },
+  {
+    "id": "telecom_007",
+    "issue_type": "service_issue",
+    "instruction": "You are Matthew, a customer calling phone support. My phone is showing 'No SIM' and I can't make calls. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +17135550122 and email matthew.robinson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "sim_unseated",
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_022",
+          "bill_id": "bill_035",
+          "payment_method_id": "pm_024",
+          "amount": 80.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_032",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reseat_sim_card",
+        "arguments": {
+          "device_id": "device_032"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_032"
+        }
+      },
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_032"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_022",
+          "bill_id": "bill_035"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_032"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "billing",
+      "service",
+      "sim",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "sim_unseated",
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "reseat_sim_card",
+        "resume_suspended_line"
+      ],
+      "who_acts": "both",
+      "persona": "none"
+    },
+    "line_id": "line_032",
+    "customer_id": "cust_022",
+    "device_id": "device_032"
+  },
+  {
+    "id": "telecom_008",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are David, a customer calling phone support. Internet doesn't work on cellular \u2014 my data isn't loading at all. When asked to authenticate, provide your phone number +19175550124 and email david.rodriguez@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "mobile_data_disabled"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_036",
+          "enabled": true
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_036"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mobile_data"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "mobile_data_disabled"
+      ],
+      "required_tools": [
+        "toggle_mobile_data"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_036",
+    "customer_id": "cust_024",
+    "device_id": "device_036"
+  },
+  {
+    "id": "telecom_009",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are James, a customer calling phone support. I tried turning on roaming on my phone but my data still doesn't work abroad. When asked to authenticate, provide your phone number +14045550110 and email james.wilson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "backend_roaming_off"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "enable_backend_roaming",
+        "arguments": {
+          "line_id": "line_014"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_backend_roaming_enabled",
+        "arguments": {
+          "line_id": "line_014"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "backend",
+      "roaming"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "backend_roaming_off"
+      ],
+      "required_tools": [
+        "enable_backend_roaming"
+      ],
+      "who_acts": "agent",
+      "persona": "hard"
+    },
+    "line_id": "line_014",
+    "customer_id": "cust_010",
+    "device_id": "device_014"
+  },
+  {
+    "id": "telecom_010",
+    "issue_type": "service_issue",
+    "instruction": "You are Emma, a customer calling phone support. My phone says 'No service' and I think I might owe a bill. I have no service at all on my phone \u2014 no bars in the corner. When asked to authenticate, provide your phone number +13105550103 and email emma.williams@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "backend_line_suspended_overdue",
+      "airplane_mode_on"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_003",
+          "bill_id": "bill_005",
+          "payment_method_id": "pm_004",
+          "amount": 65.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_004",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_004",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_004"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_003",
+          "bill_id": "bill_005"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_004"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_004"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "airplane_mode",
+      "billing",
+      "service",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "backend_line_suspended_overdue",
+        "airplane_mode_on"
+      ],
+      "required_tools": [
+        "make_payment",
+        "resume_suspended_line",
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "both",
+      "persona": "none"
+    },
+    "line_id": "line_004",
+    "customer_id": "cust_003",
+    "device_id": "device_004"
+  },
+  {
+    "id": "telecom_011",
+    "issue_type": "mms_issue",
+    "instruction": "You are Elizabeth, a customer calling phone support. I can't send picture messages from my phone. When asked to authenticate, provide your phone number +18475550125 and email elizabeth.lewis@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "mms_permission_missing"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_037",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_037"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "permission"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "mms_permission_missing"
+      ],
+      "required_tools": [
+        "grant_app_permission"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_037",
+    "customer_id": "cust_025",
+    "device_id": "device_037"
+  },
+  {
+    "id": "telecom_012",
+    "issue_type": "service_issue",
+    "instruction": "You are Noah, a customer calling phone support. My phone is showing 'No SIM' and I can't make calls. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +16175550104 and email noah.brown@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "sim_unseated",
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_004",
+          "bill_id": "bill_007",
+          "payment_method_id": "pm_005",
+          "amount": 130.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_005",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reseat_sim_card",
+        "arguments": {
+          "device_id": "device_005"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_005"
+        }
+      },
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_005"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_004",
+          "bill_id": "bill_007"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_005"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "billing",
+      "service",
+      "sim",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "sim_unseated",
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "reseat_sim_card",
+        "resume_suspended_line"
+      ],
+      "who_acts": "both",
+      "persona": "hard"
+    },
+    "line_id": "line_005",
+    "customer_id": "cust_004",
+    "device_id": "device_005"
+  },
+  {
+    "id": "telecom_013",
+    "issue_type": "service_issue",
+    "instruction": "You are Emily, a customer calling phone support. I have a SIM in but I'm seeing no signal at all even though my line is supposed to work. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +14155550123 and email emily.clark@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "weak_signal_at_carrier_provisioning",
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "reset_network_provisioning",
+        "arguments": {
+          "line_id": "line_050"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_023",
+          "bill_id": "bill_036",
+          "payment_method_id": "pm_025",
+          "amount": 85.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_050",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_050",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_050",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_050"
+        }
+      },
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_050"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_023",
+          "bill_id": "bill_036"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_050"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "billing",
+      "provisioning",
+      "service",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "weak_signal_at_carrier_provisioning",
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "reset_network_provisioning",
+        "resume_suspended_line",
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "both",
+      "persona": "none"
+    },
+    "line_id": "line_050",
+    "customer_id": "cust_023",
+    "device_id": "device_050"
+  },
+  {
+    "id": "telecom_014",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Evelyn, a customer calling phone support. My data is crawling \u2014 could it be something on my phone slowing it down? Cellular data isn't working \u2014 Wi-Fi is fine but mobile internet does nothing. When asked to authenticate, provide your phone number +16195550119 and email evelyn.thompson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "vpn_connected_slow_data",
+      "invalid_apn_blocks_data"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "disconnect_vpn",
+        "arguments": {
+          "device_id": "device_028"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reset_apn_settings",
+        "arguments": {
+          "device_id": "device_028"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reboot_device",
+        "arguments": {
+          "device_id": "device_028"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_no_vpn",
+        "arguments": {
+          "device_id": "device_028"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_028",
+          "min_label": "medium"
+        }
+      },
+      {
+        "name": "assert_apn_valid",
+        "arguments": {
+          "device_id": "device_028"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_028"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "apn",
+      "mobile_data",
+      "slow_data",
+      "vpn"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "vpn_connected_slow_data",
+        "invalid_apn_blocks_data"
+      ],
+      "required_tools": [
+        "disconnect_vpn",
+        "reboot_device",
+        "reset_apn_settings"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_028",
+    "customer_id": "cust_019",
+    "device_id": "device_028"
+  },
+  {
+    "id": "telecom_015",
+    "issue_type": "mms_issue",
+    "instruction": "You are Isabella, a customer calling phone support. My picture messages don't send. I think my data was off too. My Messages app keeps acting weird and pictures won't go through. I can't send picture messages from my phone. When asked to authenticate, provide your phone number +13055550109 and email isabella.rodriguez@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "mms_requires_mobile_data_fix_first",
+      "messages_cache_corrupt",
+      "mms_permission_missing"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_013",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_013",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "clear_messages_app_cache",
+        "arguments": {
+          "device_id": "device_013"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "restart_messages_app",
+        "arguments": {
+          "device_id": "device_013"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_013",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_013",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_013"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_013"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_013"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_013"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "cache",
+      "mms",
+      "mobile_data",
+      "permission"
+    ],
+    "difficulty": {
+      "n_subtasks": 3,
+      "subtask_ids": [
+        "mms_requires_mobile_data_fix_first",
+        "messages_cache_corrupt",
+        "mms_permission_missing"
+      ],
+      "required_tools": [
+        "clear_messages_app_cache",
+        "grant_app_permission",
+        "restart_messages_app",
+        "toggle_mobile_data"
+      ],
+      "who_acts": "user",
+      "persona": "hard"
+    },
+    "line_id": "line_013",
+    "customer_id": "cust_009",
+    "device_id": "device_013"
+  },
+  {
+    "id": "telecom_016",
+    "issue_type": "mms_issue",
+    "instruction": "You are David, a customer calling phone support. My picture messages don't send. I think my data was off too. I can't send any picture messages and my friend tried sending me one and it never came through. My picture messages won't send \u2014 I had Wi-Fi calling on if that matters. When asked to authenticate, provide your phone number +19175550124 and email david.rodriguez@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "mms_requires_mobile_data_fix_first",
+      "mmsc_invalid",
+      "wifi_calling_conflict"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "reset_network_provisioning",
+        "arguments": {
+          "line_id": "line_035"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_035",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_035",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reboot_device",
+        "arguments": {
+          "device_id": "device_035"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_wifi_calling",
+        "arguments": {
+          "device_id": "device_035",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_035"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_035"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_035"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_035"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "mmsc",
+      "mobile_data",
+      "provisioning",
+      "wifi_calling"
+    ],
+    "difficulty": {
+      "n_subtasks": 3,
+      "subtask_ids": [
+        "mms_requires_mobile_data_fix_first",
+        "mmsc_invalid",
+        "wifi_calling_conflict"
+      ],
+      "required_tools": [
+        "grant_app_permission",
+        "reboot_device",
+        "reset_network_provisioning",
+        "toggle_mobile_data",
+        "toggle_wifi_calling"
+      ],
+      "who_acts": "both",
+      "persona": "none"
+    },
+    "line_id": "line_035",
+    "customer_id": "cust_024",
+    "device_id": "device_035"
+  },
+  {
+    "id": "telecom_017",
+    "issue_type": "mms_issue",
+    "instruction": "You are Daniel, a customer calling phone support. My picture messages won't send \u2014 I had Wi-Fi calling on if that matters. My Messages app keeps acting weird and pictures won't go through. When asked to authenticate, provide your phone number +17865550120 and email daniel.garcia@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "wifi_calling_conflict",
+      "messages_cache_corrupt"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_wifi_calling",
+        "arguments": {
+          "device_id": "device_030",
+          "enabled": false
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "clear_messages_app_cache",
+        "arguments": {
+          "device_id": "device_030"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "restart_messages_app",
+        "arguments": {
+          "device_id": "device_030"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_030",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_030"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_030"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "cache",
+      "mms",
+      "wifi_calling"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "wifi_calling_conflict",
+        "messages_cache_corrupt"
+      ],
+      "required_tools": [
+        "clear_messages_app_cache",
+        "grant_app_permission",
+        "restart_messages_app",
+        "toggle_wifi_calling"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_030",
+    "customer_id": "cust_020",
+    "device_id": "device_030"
+  },
+  {
+    "id": "telecom_018",
+    "issue_type": "mms_issue",
+    "instruction": "You are Avery, a customer calling phone support. My picture messages won't send \u2014 I had Wi-Fi calling on if that matters. My Messages app keeps acting weird and pictures won't go through. When asked to authenticate, provide your phone number +19045550129 and email avery.young@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "wifi_calling_conflict",
+      "messages_cache_corrupt"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_wifi_calling",
+        "arguments": {
+          "device_id": "device_043",
+          "enabled": false
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "clear_messages_app_cache",
+        "arguments": {
+          "device_id": "device_043"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "restart_messages_app",
+        "arguments": {
+          "device_id": "device_043"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_043",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_043"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_043"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "cache",
+      "mms",
+      "wifi_calling"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "wifi_calling_conflict",
+        "messages_cache_corrupt"
+      ],
+      "required_tools": [
+        "clear_messages_app_cache",
+        "grant_app_permission",
+        "restart_messages_app",
+        "toggle_wifi_calling"
+      ],
+      "who_acts": "user",
+      "persona": "hard"
+    },
+    "line_id": "line_043",
+    "customer_id": "cust_029",
+    "device_id": "device_043"
+  },
+  {
+    "id": "telecom_019",
+    "issue_type": "mms_issue",
+    "instruction": "You are Christopher, a customer calling phone support. My picture messages don't send. I think my data was off too. My Messages app keeps acting weird and pictures won't go through. I can't send picture messages from my phone. When asked to authenticate, provide your phone number +15125550130 and email christopher.king@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "mms_requires_mobile_data_fix_first",
+      "messages_cache_corrupt",
+      "mms_permission_missing"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_044",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_044",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "clear_messages_app_cache",
+        "arguments": {
+          "device_id": "device_044"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "restart_messages_app",
+        "arguments": {
+          "device_id": "device_044"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_044",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_044",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_044"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_044"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_044"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_044"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "cache",
+      "mms",
+      "mobile_data",
+      "permission"
+    ],
+    "difficulty": {
+      "n_subtasks": 3,
+      "subtask_ids": [
+        "mms_requires_mobile_data_fix_first",
+        "messages_cache_corrupt",
+        "mms_permission_missing"
+      ],
+      "required_tools": [
+        "clear_messages_app_cache",
+        "grant_app_permission",
+        "restart_messages_app",
+        "toggle_mobile_data"
+      ],
+      "who_acts": "user",
+      "persona": "none"
+    },
+    "line_id": "line_044",
+    "customer_id": "cust_030",
+    "device_id": "device_044"
+  },
+  {
+    "id": "telecom_020",
+    "issue_type": "service_issue",
+    "instruction": "You are Matthew, a customer calling phone support. I have no service at all on my phone \u2014 no bars in the corner. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +17135550122 and email matthew.robinson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "airplane_mode_on",
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_022",
+          "bill_id": "bill_035",
+          "payment_method_id": "pm_024",
+          "amount": 80.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_033",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_033",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_033"
+        }
+      },
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_033"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_022",
+          "bill_id": "bill_035"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_033"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "airplane_mode",
+      "billing",
+      "service",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "airplane_mode_on",
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "resume_suspended_line",
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "both",
+      "persona": "easy"
+    },
+    "line_id": "line_033",
+    "customer_id": "cust_022",
+    "device_id": "device_033"
+  },
+  {
+    "id": "telecom_021",
+    "issue_type": "service_issue",
+    "instruction": "You are James, a customer calling phone support. My phone is showing 'No SIM' and I can't make calls. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +14045550110 and email james.wilson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "sim_unseated",
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_010",
+          "bill_id": "bill_019",
+          "payment_method_id": "pm_011",
+          "amount": 150.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_015",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reseat_sim_card",
+        "arguments": {
+          "device_id": "device_015"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_015"
+        }
+      },
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_015"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_010",
+          "bill_id": "bill_019"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_015"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "billing",
+      "service",
+      "sim",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "sim_unseated",
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "reseat_sim_card",
+        "resume_suspended_line"
+      ],
+      "who_acts": "both",
+      "persona": "hard"
+    },
+    "line_id": "line_015",
+    "customer_id": "cust_010",
+    "device_id": "device_015"
+  },
+  {
+    "id": "telecom_022",
+    "issue_type": "service_issue",
+    "instruction": "You are Daniel, a customer calling phone support. I have no service at all on my phone \u2014 no bars in the corner. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +17865550120 and email daniel.garcia@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "airplane_mode_on",
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_020",
+          "bill_id": "bill_033",
+          "payment_method_id": "pm_022",
+          "amount": 65.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_029",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_029",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_029"
+        }
+      },
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_029"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_020",
+          "bill_id": "bill_033"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_029"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "airplane_mode",
+      "billing",
+      "service",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "airplane_mode_on",
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "resume_suspended_line",
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "both",
+      "persona": "none"
+    },
+    "line_id": "line_029",
+    "customer_id": "cust_020",
+    "device_id": "device_029"
+  },
+  {
+    "id": "telecom_023",
+    "issue_type": "mms_issue",
+    "instruction": "You are Henry, a customer calling phone support. I can't send picture messages from my phone. When asked to authenticate, provide your phone number +12155550116 and email henry.white@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "mms_permission_missing"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_023",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_023"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "permission"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "mms_permission_missing"
+      ],
+      "required_tools": [
+        "grant_app_permission"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_023",
+    "customer_id": "cust_016",
+    "device_id": "device_023"
+  },
+  {
+    "id": "telecom_024",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Alexander, a customer calling phone support. My internet stopped working and I think I may have used up my data. Internet doesn't work on cellular \u2014 my data isn't loading at all. When asked to authenticate, provide your phone number +19495550118 and email alexander.martin@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "data_limit_reached_refuel_required",
+      "mobile_data_disabled"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "add_data_refuel",
+        "arguments": {
+          "line_id": "line_026",
+          "gb_amount": 5.0,
+          "payment_method_id": "pm_020"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_026",
+          "enabled": true
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_026"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_026"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "data_cap",
+      "mobile_data",
+      "refuel"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "data_limit_reached_refuel_required",
+        "mobile_data_disabled"
+      ],
+      "required_tools": [
+        "add_data_refuel",
+        "toggle_mobile_data"
+      ],
+      "who_acts": "both",
+      "persona": "hard"
+    },
+    "line_id": "line_026",
+    "customer_id": "cust_018",
+    "device_id": "device_026"
+  },
+  {
+    "id": "telecom_025",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Emily, a customer calling phone support. Internet doesn't work on cellular \u2014 my data isn't loading at all. When asked to authenticate, provide your phone number +14155550123 and email emily.clark@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "mobile_data_disabled"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_034",
+          "enabled": true
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_034"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mobile_data"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "mobile_data_disabled"
+      ],
+      "required_tools": [
+        "toggle_mobile_data"
+      ],
+      "who_acts": "user",
+      "persona": "none"
+    },
+    "line_id": "line_034",
+    "customer_id": "cust_023",
+    "device_id": "device_034"
+  },
+  {
+    "id": "telecom_026",
+    "issue_type": "mms_issue",
+    "instruction": "You are Olivia, a customer calling phone support. My picture messages won't send \u2014 I had Wi-Fi calling on if that matters. I can't send picture messages from my phone. When asked to authenticate, provide your phone number +14155550101 and email olivia.martinez@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "wifi_calling_conflict",
+      "mms_permission_missing"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_wifi_calling",
+        "arguments": {
+          "device_id": "device_046",
+          "enabled": false
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_046",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_046"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_046"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "permission",
+      "wifi_calling"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "wifi_calling_conflict",
+        "mms_permission_missing"
+      ],
+      "required_tools": [
+        "grant_app_permission",
+        "toggle_wifi_calling"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_046",
+    "customer_id": "cust_001",
+    "device_id": "device_046"
+  },
+  {
+    "id": "telecom_027",
+    "issue_type": "service_issue",
+    "instruction": "You are Olivia, a customer calling phone support. My phone is showing 'No SIM' and I can't make calls. When asked to authenticate, provide your phone number +14155550101 and email olivia.martinez@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "sim_unseated"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "reseat_sim_card",
+        "arguments": {
+          "device_id": "device_001"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_001"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "service",
+      "sim"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "sim_unseated"
+      ],
+      "required_tools": [
+        "reseat_sim_card"
+      ],
+      "who_acts": "user",
+      "persona": "hard"
+    },
+    "line_id": "line_001",
+    "customer_id": "cust_001",
+    "device_id": "device_001"
+  },
+  {
+    "id": "telecom_028",
+    "issue_type": "service_issue",
+    "instruction": "You are Amelia, a customer calling phone support. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +19145550115 and email amelia.jackson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_015",
+          "bill_id": "bill_027",
+          "payment_method_id": "pm_017",
+          "amount": 40.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_022",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_022"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_015",
+          "bill_id": "bill_027"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_022"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "billing",
+      "service",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "resume_suspended_line"
+      ],
+      "who_acts": "agent",
+      "persona": "none"
+    },
+    "line_id": "line_022",
+    "customer_id": "cust_015",
+    "device_id": "device_022"
+  },
+  {
+    "id": "telecom_029",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Benjamin, a customer calling phone support. Cellular data isn't working \u2014 Wi-Fi is fine but mobile internet does nothing. When asked to authenticate, provide your phone number +17025550112 and email benjamin.thomas@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "invalid_apn_blocks_data"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "reset_apn_settings",
+        "arguments": {
+          "device_id": "device_018"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reboot_device",
+        "arguments": {
+          "device_id": "device_018"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_apn_valid",
+        "arguments": {
+          "device_id": "device_018"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_018"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "apn",
+      "mobile_data"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "invalid_apn_blocks_data"
+      ],
+      "required_tools": [
+        "reboot_device",
+        "reset_apn_settings"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_018",
+    "customer_id": "cust_012",
+    "device_id": "device_018"
+  },
+  {
+    "id": "telecom_030",
+    "issue_type": "service_issue",
+    "instruction": "You are Ava, a customer calling phone support. My phone is showing 'No SIM' and I can't make calls. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +17735550105 and email ava.jones@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "sim_unseated",
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_005",
+          "bill_id": "bill_009",
+          "payment_method_id": "pm_006",
+          "amount": 65.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_048",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reseat_sim_card",
+        "arguments": {
+          "device_id": "device_048"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_048"
+        }
+      },
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_048"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_005",
+          "bill_id": "bill_009"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_048"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "billing",
+      "service",
+      "sim",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "sim_unseated",
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "reseat_sim_card",
+        "resume_suspended_line"
+      ],
+      "who_acts": "both",
+      "persona": "hard"
+    },
+    "line_id": "line_048",
+    "customer_id": "cust_005",
+    "device_id": "device_048"
+  },
+  {
+    "id": "telecom_031",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Samuel, a customer calling phone support. My data is crawling \u2014 could it be something on my phone slowing it down? When asked to authenticate, provide your phone number +19725550128 and email samuel.allen@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "vpn_connected_slow_data"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "disconnect_vpn",
+        "arguments": {
+          "device_id": "device_041"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_no_vpn",
+        "arguments": {
+          "device_id": "device_041"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_041",
+          "min_label": "medium"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "slow_data",
+      "vpn"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "vpn_connected_slow_data"
+      ],
+      "required_tools": [
+        "disconnect_vpn"
+      ],
+      "who_acts": "user",
+      "persona": "none"
+    },
+    "line_id": "line_041",
+    "customer_id": "cust_028",
+    "device_id": "device_041"
+  },
+  {
+    "id": "telecom_032",
+    "issue_type": "service_issue",
+    "instruction": "You are Joseph, a customer calling phone support. I have no service at all on my phone \u2014 no bars in the corner. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +12485550126 and email joseph.walker@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "airplane_mode_on",
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_026",
+          "bill_id": "bill_038",
+          "payment_method_id": "pm_028",
+          "amount": 150.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_039",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_039",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_039"
+        }
+      },
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_039"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_026",
+          "bill_id": "bill_038"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_039"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "airplane_mode",
+      "billing",
+      "service",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "airplane_mode_on",
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "resume_suspended_line",
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "both",
+      "persona": "easy"
+    },
+    "line_id": "line_039",
+    "customer_id": "cust_026",
+    "device_id": "device_039"
+  },
+  {
+    "id": "telecom_033",
+    "issue_type": "mms_issue",
+    "instruction": "You are Emma, a customer calling phone support. My Messages app keeps acting weird and pictures won't go through. When asked to authenticate, provide your phone number +13105550103 and email emma.williams@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "messages_cache_corrupt"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "clear_messages_app_cache",
+        "arguments": {
+          "device_id": "device_047"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "restart_messages_app",
+        "arguments": {
+          "device_id": "device_047"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_047",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_047"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "cache",
+      "mms"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "messages_cache_corrupt"
+      ],
+      "required_tools": [
+        "clear_messages_app_cache",
+        "grant_app_permission",
+        "restart_messages_app"
+      ],
+      "who_acts": "user",
+      "persona": "hard"
+    },
+    "line_id": "line_047",
+    "customer_id": "cust_003",
+    "device_id": "device_047"
+  },
+  {
+    "id": "telecom_034",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Liam, a customer calling phone support. I tried turning on roaming on my phone but my data still doesn't work abroad. My internet stopped working and I think I may have used up my data. My phone says 2G in the corner and pages won't load. When asked to authenticate, provide your phone number +12125550102 and email liam.johnson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "backend_roaming_off",
+      "data_limit_reached_refuel_required",
+      "network_mode_2g"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "enable_backend_roaming",
+        "arguments": {
+          "line_id": "line_003"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "add_data_refuel",
+        "arguments": {
+          "line_id": "line_003",
+          "gb_amount": 5.0,
+          "payment_method_id": "pm_002"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "switch_network_mode",
+        "arguments": {
+          "device_id": "device_003",
+          "network_type": "4G"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_backend_roaming_enabled",
+        "arguments": {
+          "line_id": "line_003"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_003"
+        }
+      },
+      {
+        "name": "assert_network_type_not_2g",
+        "arguments": {
+          "device_id": "device_003"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_003",
+          "min_label": "medium"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "backend",
+      "data_cap",
+      "network_mode",
+      "refuel",
+      "roaming",
+      "slow_data"
+    ],
+    "difficulty": {
+      "n_subtasks": 3,
+      "subtask_ids": [
+        "backend_roaming_off",
+        "data_limit_reached_refuel_required",
+        "network_mode_2g"
+      ],
+      "required_tools": [
+        "add_data_refuel",
+        "enable_backend_roaming",
+        "switch_network_mode"
+      ],
+      "who_acts": "both",
+      "persona": "none"
+    },
+    "line_id": "line_003",
+    "customer_id": "cust_002",
+    "device_id": "device_003"
+  },
+  {
+    "id": "telecom_035",
+    "issue_type": "mms_issue",
+    "instruction": "You are Abigail, a customer calling phone support. My Messages app keeps acting weird and pictures won't go through. I can't send picture messages from my phone. My picture messages won't send \u2014 I had Wi-Fi calling on if that matters. My picture messages don't send. I think my data was off too. When asked to authenticate, provide your phone number +12145550121 and email abigail.martinez@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "messages_cache_corrupt",
+      "mms_permission_missing",
+      "wifi_calling_conflict",
+      "mms_requires_mobile_data_fix_first"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "clear_messages_app_cache",
+        "arguments": {
+          "device_id": "device_031"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "restart_messages_app",
+        "arguments": {
+          "device_id": "device_031"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_031",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_031",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_wifi_calling",
+        "arguments": {
+          "device_id": "device_031",
+          "enabled": false
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_031",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_031",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_031"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_031"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_031"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_031"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_031"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "cache",
+      "mms",
+      "mobile_data",
+      "permission",
+      "wifi_calling"
+    ],
+    "difficulty": {
+      "n_subtasks": 4,
+      "subtask_ids": [
+        "messages_cache_corrupt",
+        "mms_permission_missing",
+        "wifi_calling_conflict",
+        "mms_requires_mobile_data_fix_first"
+      ],
+      "required_tools": [
+        "clear_messages_app_cache",
+        "grant_app_permission",
+        "restart_messages_app",
+        "toggle_mobile_data",
+        "toggle_wifi_calling"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_031",
+    "customer_id": "cust_021",
+    "device_id": "device_031"
+  },
+  {
+    "id": "telecom_036",
+    "issue_type": "service_issue",
+    "instruction": "You are Noah, a customer calling phone support. I have no service at all on my phone \u2014 no bars in the corner. When asked to authenticate, provide your phone number +16175550104 and email noah.brown@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "airplane_mode_on"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_006",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_006"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "airplane_mode",
+      "service"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "airplane_mode_on"
+      ],
+      "required_tools": [
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "user",
+      "persona": "hard"
+    },
+    "line_id": "line_006",
+    "customer_id": "cust_004",
+    "device_id": "device_006"
+  },
+  {
+    "id": "telecom_037",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Joseph, a customer calling phone support. My phone says 2G in the corner and pages won't load. I tried turning on roaming on my phone but my data still doesn't work abroad. My data is crawling \u2014 could it be something on my phone slowing it down? When asked to authenticate, provide your phone number +12485550126 and email joseph.walker@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "network_mode_2g",
+      "backend_roaming_off",
+      "vpn_connected_slow_data"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "enable_backend_roaming",
+        "arguments": {
+          "line_id": "line_038"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "switch_network_mode",
+        "arguments": {
+          "device_id": "device_038",
+          "network_type": "4G"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "disconnect_vpn",
+        "arguments": {
+          "device_id": "device_038"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_network_type_not_2g",
+        "arguments": {
+          "device_id": "device_038"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_038",
+          "min_label": "medium"
+        }
+      },
+      {
+        "name": "assert_backend_roaming_enabled",
+        "arguments": {
+          "line_id": "line_038"
+        }
+      },
+      {
+        "name": "assert_no_vpn",
+        "arguments": {
+          "device_id": "device_038"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_038",
+          "min_label": "medium"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "backend",
+      "network_mode",
+      "roaming",
+      "slow_data",
+      "vpn"
+    ],
+    "difficulty": {
+      "n_subtasks": 3,
+      "subtask_ids": [
+        "network_mode_2g",
+        "backend_roaming_off",
+        "vpn_connected_slow_data"
+      ],
+      "required_tools": [
+        "disconnect_vpn",
+        "enable_backend_roaming",
+        "switch_network_mode"
+      ],
+      "who_acts": "both",
+      "persona": "none"
+    },
+    "line_id": "line_038",
+    "customer_id": "cust_026",
+    "device_id": "device_038"
+  },
+  {
+    "id": "telecom_038",
+    "issue_type": "mms_issue",
+    "instruction": "You are Ava, a customer calling phone support. I can't send picture messages from my phone. When asked to authenticate, provide your phone number +17735550105 and email ava.jones@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "mms_permission_missing"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_007",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_007"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "permission"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "mms_permission_missing"
+      ],
+      "required_tools": [
+        "grant_app_permission"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_007",
+    "customer_id": "cust_005",
+    "device_id": "device_007"
+  },
+  {
+    "id": "telecom_039",
+    "issue_type": "mms_issue",
+    "instruction": "You are Ethan, a customer calling phone support. I can't send any picture messages and my friend tried sending me one and it never came through. My picture messages don't send. I think my data was off too. When asked to authenticate, provide your phone number +12065550106 and email ethan.garcia@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "mmsc_invalid",
+      "mms_requires_mobile_data_fix_first"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "reset_network_provisioning",
+        "arguments": {
+          "line_id": "line_009"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reboot_device",
+        "arguments": {
+          "device_id": "device_009"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_009",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_009",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_009"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_009"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_009"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "mmsc",
+      "mobile_data",
+      "provisioning"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "mmsc_invalid",
+        "mms_requires_mobile_data_fix_first"
+      ],
+      "required_tools": [
+        "grant_app_permission",
+        "reboot_device",
+        "reset_network_provisioning",
+        "toggle_mobile_data"
+      ],
+      "who_acts": "both",
+      "persona": "hard"
+    },
+    "line_id": "line_009",
+    "customer_id": "cust_006",
+    "device_id": "device_009"
+  },
+  {
+    "id": "telecom_040",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Mia, a customer calling phone support. My internet stopped working and I think I may have used up my data. I'm traveling abroad and my mobile data doesn't work, even though my plan supports it. Cellular data isn't working \u2014 Wi-Fi is fine but mobile internet does nothing. When asked to authenticate, provide your phone number +16025550111 and email mia.anderson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "data_limit_reached_refuel_required",
+      "device_roaming_off",
+      "invalid_apn_blocks_data"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "add_data_refuel",
+        "arguments": {
+          "line_id": "line_016",
+          "gb_amount": 5.0,
+          "payment_method_id": "pm_013"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_device_roaming",
+        "arguments": {
+          "device_id": "device_016",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reset_apn_settings",
+        "arguments": {
+          "device_id": "device_016"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reboot_device",
+        "arguments": {
+          "device_id": "device_016"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_016"
+        }
+      },
+      {
+        "name": "assert_device_roaming_enabled",
+        "arguments": {
+          "device_id": "device_016"
+        }
+      },
+      {
+        "name": "assert_apn_valid",
+        "arguments": {
+          "device_id": "device_016"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_016"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "apn",
+      "data_cap",
+      "mobile_data",
+      "refuel",
+      "roaming"
+    ],
+    "difficulty": {
+      "n_subtasks": 3,
+      "subtask_ids": [
+        "data_limit_reached_refuel_required",
+        "device_roaming_off",
+        "invalid_apn_blocks_data"
+      ],
+      "required_tools": [
+        "add_data_refuel",
+        "reboot_device",
+        "reset_apn_settings",
+        "toggle_device_roaming"
+      ],
+      "who_acts": "both",
+      "persona": "none"
+    },
+    "line_id": "line_016",
+    "customer_id": "cust_011",
+    "device_id": "device_016"
+  },
+  {
+    "id": "telecom_041",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Benjamin, a customer calling phone support. My data is crawling \u2014 could it be something on my phone slowing it down? My internet stopped working and I think I may have used up my data. My mobile data is really slow today \u2014 pages take forever to load. When asked to authenticate, provide your phone number +17025550112 and email benjamin.thomas@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "vpn_connected_slow_data",
+      "data_limit_reached_refuel_required",
+      "data_saver_on"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "add_data_refuel",
+        "arguments": {
+          "line_id": "line_017",
+          "gb_amount": 5.0,
+          "payment_method_id": "pm_014"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "disconnect_vpn",
+        "arguments": {
+          "device_id": "device_017"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_data_saver",
+        "arguments": {
+          "device_id": "device_017",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_no_vpn",
+        "arguments": {
+          "device_id": "device_017"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_017",
+          "min_label": "medium"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_017"
+        }
+      },
+      {
+        "name": "assert_data_saver_disabled",
+        "arguments": {
+          "device_id": "device_017"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_017",
+          "min_label": "medium"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "data_cap",
+      "data_saver",
+      "refuel",
+      "slow_data",
+      "vpn"
+    ],
+    "difficulty": {
+      "n_subtasks": 3,
+      "subtask_ids": [
+        "vpn_connected_slow_data",
+        "data_limit_reached_refuel_required",
+        "data_saver_on"
+      ],
+      "required_tools": [
+        "add_data_refuel",
+        "disconnect_vpn",
+        "toggle_data_saver"
+      ],
+      "who_acts": "both",
+      "persona": "easy"
+    },
+    "line_id": "line_017",
+    "customer_id": "cust_012",
+    "device_id": "device_017"
+  },
+  {
+    "id": "telecom_042",
+    "issue_type": "mms_issue",
+    "instruction": "You are Charlotte, a customer calling phone support. My picture messages won't send \u2014 I had Wi-Fi calling on if that matters. When asked to authenticate, provide your phone number +15035550113 and email charlotte.moore@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "wifi_calling_conflict"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_wifi_calling",
+        "arguments": {
+          "device_id": "device_019",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_019"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "wifi_calling"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "wifi_calling_conflict"
+      ],
+      "required_tools": [
+        "toggle_wifi_calling"
+      ],
+      "who_acts": "user",
+      "persona": "hard"
+    },
+    "line_id": "line_019",
+    "customer_id": "cust_013",
+    "device_id": "device_019"
+  },
+  {
+    "id": "telecom_043",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Liam, a customer calling phone support. Cellular data isn't working \u2014 Wi-Fi is fine but mobile internet does nothing. My mobile data is really slow today \u2014 pages take forever to load. When asked to authenticate, provide your phone number +12125550102 and email liam.johnson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "invalid_apn_blocks_data",
+      "data_saver_on"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "reset_apn_settings",
+        "arguments": {
+          "device_id": "device_002"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reboot_device",
+        "arguments": {
+          "device_id": "device_002"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_data_saver",
+        "arguments": {
+          "device_id": "device_002",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_apn_valid",
+        "arguments": {
+          "device_id": "device_002"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_002"
+        }
+      },
+      {
+        "name": "assert_data_saver_disabled",
+        "arguments": {
+          "device_id": "device_002"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_002",
+          "min_label": "medium"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "apn",
+      "data_saver",
+      "mobile_data",
+      "slow_data"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "invalid_apn_blocks_data",
+        "data_saver_on"
+      ],
+      "required_tools": [
+        "reboot_device",
+        "reset_apn_settings",
+        "toggle_data_saver"
+      ],
+      "who_acts": "user",
+      "persona": "none"
+    },
+    "line_id": "line_002",
+    "customer_id": "cust_002",
+    "device_id": "device_002"
+  },
+  {
+    "id": "telecom_044",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Ethan, a customer calling phone support. My mobile data is really slow today \u2014 pages take forever to load. My internet stopped working and I think I may have used up my data. I'm traveling abroad and my mobile data doesn't work, even though my plan supports it. Internet doesn't work on cellular \u2014 my data isn't loading at all. When asked to authenticate, provide your phone number +12065550106 and email ethan.garcia@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "data_saver_on",
+      "data_limit_reached_refuel_required",
+      "device_roaming_off",
+      "mobile_data_disabled"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "add_data_refuel",
+        "arguments": {
+          "line_id": "line_008",
+          "gb_amount": 5.0,
+          "payment_method_id": "pm_007"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_data_saver",
+        "arguments": {
+          "device_id": "device_008",
+          "enabled": false
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_device_roaming",
+        "arguments": {
+          "device_id": "device_008",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_008",
+          "enabled": true
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_data_saver_disabled",
+        "arguments": {
+          "device_id": "device_008"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_008",
+          "min_label": "medium"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_008"
+        }
+      },
+      {
+        "name": "assert_device_roaming_enabled",
+        "arguments": {
+          "device_id": "device_008"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_008"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "data_cap",
+      "data_saver",
+      "mobile_data",
+      "refuel",
+      "roaming",
+      "slow_data"
+    ],
+    "difficulty": {
+      "n_subtasks": 4,
+      "subtask_ids": [
+        "data_saver_on",
+        "data_limit_reached_refuel_required",
+        "device_roaming_off",
+        "mobile_data_disabled"
+      ],
+      "required_tools": [
+        "add_data_refuel",
+        "toggle_data_saver",
+        "toggle_device_roaming",
+        "toggle_mobile_data"
+      ],
+      "who_acts": "both",
+      "persona": "easy"
+    },
+    "line_id": "line_008",
+    "customer_id": "cust_006",
+    "device_id": "device_008"
+  },
+  {
+    "id": "telecom_045",
+    "issue_type": "service_issue",
+    "instruction": "You are Christopher, a customer calling phone support. I have no service at all on my phone \u2014 no bars in the corner. When asked to authenticate, provide your phone number +15125550130 and email christopher.king@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "airplane_mode_on"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_045",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_045"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "airplane_mode",
+      "service"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "airplane_mode_on"
+      ],
+      "required_tools": [
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "user",
+      "persona": "hard"
+    },
+    "line_id": "line_045",
+    "customer_id": "cust_030",
+    "device_id": "device_045"
+  },
+  {
+    "id": "telecom_046",
+    "issue_type": "service_issue",
+    "instruction": "You are Lucas, a customer calling phone support. I have no service at all on my phone \u2014 no bars in the corner. When asked to authenticate, provide your phone number +16025550114 and email lucas.taylor@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "airplane_mode_on"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_020",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_020"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "airplane_mode",
+      "service"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "airplane_mode_on"
+      ],
+      "required_tools": [
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "user",
+      "persona": "none"
+    },
+    "line_id": "line_020",
+    "customer_id": "cust_014",
+    "device_id": "device_020"
+  },
+  {
+    "id": "telecom_047",
+    "issue_type": "service_issue",
+    "instruction": "You are Henry, a customer calling phone support. I have a SIM in but I'm seeing no signal at all even though my line is supposed to work. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +12155550116 and email henry.white@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "weak_signal_at_carrier_provisioning",
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "reset_network_provisioning",
+        "arguments": {
+          "line_id": "line_024"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_016",
+          "bill_id": "bill_028",
+          "payment_method_id": "pm_018",
+          "amount": 100.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_024",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_024",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_024",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_024"
+        }
+      },
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_024"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_016",
+          "bill_id": "bill_028"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_024"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "billing",
+      "provisioning",
+      "service",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "weak_signal_at_carrier_provisioning",
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "reset_network_provisioning",
+        "resume_suspended_line",
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "both",
+      "persona": "easy"
+    },
+    "line_id": "line_024",
+    "customer_id": "cust_016",
+    "device_id": "device_024"
+  },
+  {
+    "id": "telecom_048",
+    "issue_type": "service_issue",
+    "instruction": "You are Sofia, a customer calling phone support. I have a SIM in but I'm seeing no signal at all even though my line is supposed to work. When asked to authenticate, provide your phone number +16465550127 and email sofia.hall@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "weak_signal_at_carrier_provisioning"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "reset_network_provisioning",
+        "arguments": {
+          "line_id": "line_040"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_040",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_040",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_040"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "provisioning",
+      "service"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "weak_signal_at_carrier_provisioning"
+      ],
+      "required_tools": [
+        "reset_network_provisioning",
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "both",
+      "persona": "hard"
+    },
+    "line_id": "line_040",
+    "customer_id": "cust_027",
+    "device_id": "device_040"
+  },
+  {
+    "id": "telecom_049",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Mason, a customer calling phone support. My data is crawling \u2014 could it be something on my phone slowing it down? My mobile data is really slow today \u2014 pages take forever to load. When asked to authenticate, provide your phone number +13035550108 and email mason.davis@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "vpn_connected_slow_data",
+      "data_saver_on"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "disconnect_vpn",
+        "arguments": {
+          "device_id": "device_012"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_data_saver",
+        "arguments": {
+          "device_id": "device_012",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_no_vpn",
+        "arguments": {
+          "device_id": "device_012"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_012",
+          "min_label": "medium"
+        }
+      },
+      {
+        "name": "assert_data_saver_disabled",
+        "arguments": {
+          "device_id": "device_012"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_012",
+          "min_label": "medium"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "data_saver",
+      "slow_data",
+      "vpn"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "vpn_connected_slow_data",
+        "data_saver_on"
+      ],
+      "required_tools": [
+        "disconnect_vpn",
+        "toggle_data_saver"
+      ],
+      "who_acts": "user",
+      "persona": "none"
+    },
+    "line_id": "line_012",
+    "customer_id": "cust_008",
+    "device_id": "device_012"
+  },
+  {
+    "id": "telecom_050",
+    "issue_type": "mms_issue",
+    "instruction": "You are Alexander, a customer calling phone support. My picture messages won't send \u2014 I had Wi-Fi calling on if that matters. I can't send any picture messages and my friend tried sending me one and it never came through. When asked to authenticate, provide your phone number +19495550118 and email alexander.martin@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "wifi_calling_conflict",
+      "mmsc_invalid"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "reset_network_provisioning",
+        "arguments": {
+          "line_id": "line_027"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_wifi_calling",
+        "arguments": {
+          "device_id": "device_027",
+          "enabled": false
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reboot_device",
+        "arguments": {
+          "device_id": "device_027"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_027"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_027"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "mmsc",
+      "provisioning",
+      "wifi_calling"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "wifi_calling_conflict",
+        "mmsc_invalid"
+      ],
+      "required_tools": [
+        "reboot_device",
+        "reset_network_provisioning",
+        "toggle_wifi_calling"
+      ],
+      "who_acts": "both",
+      "persona": "easy"
+    },
+    "line_id": "line_027",
+    "customer_id": "cust_018",
+    "device_id": "device_027"
+  },
+  {
+    "id": "telecom_051",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Mason, a customer calling phone support. Internet doesn't work on cellular \u2014 my data isn't loading at all. When asked to authenticate, provide your phone number +13035550108 and email mason.davis@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "mobile_data_disabled"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_011",
+          "enabled": true
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_011"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mobile_data"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "mobile_data_disabled"
+      ],
+      "required_tools": [
+        "toggle_mobile_data"
+      ],
+      "who_acts": "user",
+      "persona": "hard"
+    },
+    "line_id": "line_011",
+    "customer_id": "cust_008",
+    "device_id": "device_011"
+  },
+  {
+    "id": "telecom_052",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Matthew, a customer calling phone support. Internet doesn't work on cellular \u2014 my data isn't loading at all. I tried turning on roaming on my phone but my data still doesn't work abroad. When asked to authenticate, provide your phone number +17135550122 and email matthew.robinson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "mobile_data_disabled",
+      "backend_roaming_off"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "enable_backend_roaming",
+        "arguments": {
+          "line_id": "line_032"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_032",
+          "enabled": true
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_032"
+        }
+      },
+      {
+        "name": "assert_backend_roaming_enabled",
+        "arguments": {
+          "line_id": "line_032"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "backend",
+      "mobile_data",
+      "roaming"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "mobile_data_disabled",
+        "backend_roaming_off"
+      ],
+      "required_tools": [
+        "enable_backend_roaming",
+        "toggle_mobile_data"
+      ],
+      "who_acts": "both",
+      "persona": "none"
+    },
+    "line_id": "line_032",
+    "customer_id": "cust_022",
+    "device_id": "device_032"
+  },
+  {
+    "id": "telecom_053",
+    "issue_type": "mms_issue",
+    "instruction": "You are David, a customer calling phone support. My picture messages won't send \u2014 I had Wi-Fi calling on if that matters. When asked to authenticate, provide your phone number +19175550124 and email david.rodriguez@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "wifi_calling_conflict"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "toggle_wifi_calling",
+        "arguments": {
+          "device_id": "device_036",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_036"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "wifi_calling"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "wifi_calling_conflict"
+      ],
+      "required_tools": [
+        "toggle_wifi_calling"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_036",
+    "customer_id": "cust_024",
+    "device_id": "device_036"
+  },
+  {
+    "id": "telecom_054",
+    "issue_type": "mms_issue",
+    "instruction": "You are James, a customer calling phone support. I can't send picture messages from my phone. My picture messages don't send. I think my data was off too. When asked to authenticate, provide your phone number +14045550110 and email james.wilson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "mms_permission_missing",
+      "mms_requires_mobile_data_fix_first"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_014",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_014",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_014",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_014"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_014"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_014"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "mobile_data",
+      "permission"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "mms_permission_missing",
+        "mms_requires_mobile_data_fix_first"
+      ],
+      "required_tools": [
+        "grant_app_permission",
+        "toggle_mobile_data"
+      ],
+      "who_acts": "user",
+      "persona": "hard"
+    },
+    "line_id": "line_014",
+    "customer_id": "cust_010",
+    "device_id": "device_014"
+  },
+  {
+    "id": "telecom_055",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Emma, a customer calling phone support. Cellular data isn't working \u2014 Wi-Fi is fine but mobile internet does nothing. When asked to authenticate, provide your phone number +13105550103 and email emma.williams@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "invalid_apn_blocks_data"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "reset_apn_settings",
+        "arguments": {
+          "device_id": "device_004"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reboot_device",
+        "arguments": {
+          "device_id": "device_004"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_apn_valid",
+        "arguments": {
+          "device_id": "device_004"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_004"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "apn",
+      "mobile_data"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "invalid_apn_blocks_data"
+      ],
+      "required_tools": [
+        "reboot_device",
+        "reset_apn_settings"
+      ],
+      "who_acts": "user",
+      "persona": "none"
+    },
+    "line_id": "line_004",
+    "customer_id": "cust_003",
+    "device_id": "device_004"
+  },
+  {
+    "id": "telecom_056",
+    "issue_type": "mms_issue",
+    "instruction": "You are Elizabeth, a customer calling phone support. My picture messages don't send. I think my data was off too. I can't send any picture messages and my friend tried sending me one and it never came through. When asked to authenticate, provide your phone number +18475550125 and email elizabeth.lewis@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "mms_requires_mobile_data_fix_first",
+      "mmsc_invalid"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "reset_network_provisioning",
+        "arguments": {
+          "line_id": "line_037"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_037",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_037",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "reboot_device",
+        "arguments": {
+          "device_id": "device_037"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_037"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_037"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_037"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "mmsc",
+      "mobile_data",
+      "provisioning"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "mms_requires_mobile_data_fix_first",
+        "mmsc_invalid"
+      ],
+      "required_tools": [
+        "grant_app_permission",
+        "reboot_device",
+        "reset_network_provisioning",
+        "toggle_mobile_data"
+      ],
+      "who_acts": "both",
+      "persona": "easy"
+    },
+    "line_id": "line_037",
+    "customer_id": "cust_025",
+    "device_id": "device_037"
+  },
+  {
+    "id": "telecom_057",
+    "issue_type": "mms_issue",
+    "instruction": "You are Noah, a customer calling phone support. I can't send picture messages from my phone. My picture messages don't send. I think my data was off too. When asked to authenticate, provide your phone number +16175550104 and email noah.brown@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "mms_permission_missing",
+      "mms_requires_mobile_data_fix_first"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_005",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_005",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_005",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_005"
+        }
+      },
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_005"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_005"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "mobile_data",
+      "permission"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "mms_permission_missing",
+        "mms_requires_mobile_data_fix_first"
+      ],
+      "required_tools": [
+        "grant_app_permission",
+        "toggle_mobile_data"
+      ],
+      "who_acts": "user",
+      "persona": "hard"
+    },
+    "line_id": "line_005",
+    "customer_id": "cust_004",
+    "device_id": "device_005"
+  },
+  {
+    "id": "telecom_058",
+    "issue_type": "mobile_data_issue",
+    "instruction": "You are Emily, a customer calling phone support. My data is crawling \u2014 could it be something on my phone slowing it down? Internet doesn't work on cellular \u2014 my data isn't loading at all. I'm traveling abroad and my mobile data doesn't work, even though my plan supports it. When asked to authenticate, provide your phone number +14155550123 and email emily.clark@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. Respond to the agent's questions matter-of-factly.",
+    "persona_id": "none",
+    "initializers": [
+      "vpn_connected_slow_data",
+      "mobile_data_disabled",
+      "device_roaming_off"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "disconnect_vpn",
+        "arguments": {
+          "device_id": "device_050"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_mobile_data",
+        "arguments": {
+          "device_id": "device_050",
+          "enabled": true
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_device_roaming",
+        "arguments": {
+          "device_id": "device_050",
+          "enabled": true
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_no_vpn",
+        "arguments": {
+          "device_id": "device_050"
+        }
+      },
+      {
+        "name": "assert_speed_at_least",
+        "arguments": {
+          "device_id": "device_050",
+          "min_label": "medium"
+        }
+      },
+      {
+        "name": "assert_mobile_data_working",
+        "arguments": {
+          "device_id": "device_050"
+        }
+      },
+      {
+        "name": "assert_device_roaming_enabled",
+        "arguments": {
+          "device_id": "device_050"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mobile_data",
+      "roaming",
+      "slow_data",
+      "vpn"
+    ],
+    "difficulty": {
+      "n_subtasks": 3,
+      "subtask_ids": [
+        "vpn_connected_slow_data",
+        "mobile_data_disabled",
+        "device_roaming_off"
+      ],
+      "required_tools": [
+        "disconnect_vpn",
+        "toggle_device_roaming",
+        "toggle_mobile_data"
+      ],
+      "who_acts": "user",
+      "persona": "none"
+    },
+    "line_id": "line_050",
+    "customer_id": "cust_023",
+    "device_id": "device_050"
+  },
+  {
+    "id": "telecom_059",
+    "issue_type": "mms_issue",
+    "instruction": "You are Evelyn, a customer calling phone support. I can't send picture messages from my phone. When asked to authenticate, provide your phone number +16195550119 and email evelyn.thompson@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are calm, technical, and patient: when the agent asks you to do something on your phone, do it promptly and report exactly what you see.",
+    "persona_id": "easy",
+    "initializers": [
+      "mms_permission_missing"
+    ],
+    "solution_actions": [
+      {
+        "actor": "user",
+        "name": "grant_app_permission",
+        "arguments": {
+          "device_id": "device_028",
+          "app_name": "messages",
+          "permission": "mms"
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_can_send_mms",
+        "arguments": {
+          "device_id": "device_028"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "mms",
+      "permission"
+    ],
+    "difficulty": {
+      "n_subtasks": 1,
+      "subtask_ids": [
+        "mms_permission_missing"
+      ],
+      "required_tools": [
+        "grant_app_permission"
+      ],
+      "who_acts": "user",
+      "persona": "easy"
+    },
+    "line_id": "line_028",
+    "customer_id": "cust_019",
+    "device_id": "device_028"
+  },
+  {
+    "id": "telecom_060",
+    "issue_type": "service_issue",
+    "instruction": "You are Isabella, a customer calling phone support. I have no service at all on my phone \u2014 no bars in the corner. My phone says 'No service' and I think I might owe a bill. When asked to authenticate, provide your phone number +13055550109 and email isabella.rodriguez@example.com. Cooperate with the support agent \u2014 follow their on-device instructions, run the diagnostic checks they request, and confirm any changes they need to make on the backend. You are frustrated and not very technical. Sometimes you complain about the wait or insist the agent should fix it from their side, but eventually you do what's asked. Don't reveal the diagnosis up front \u2014 let the agent figure it out.",
+    "persona_id": "hard",
+    "initializers": [
+      "airplane_mode_on",
+      "backend_line_suspended_overdue"
+    ],
+    "solution_actions": [
+      {
+        "actor": "agent",
+        "name": "make_payment",
+        "arguments": {
+          "customer_id": "cust_009",
+          "bill_id": "bill_017",
+          "payment_method_id": "pm_010",
+          "amount": 90.0
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "agent",
+        "name": "resume_suspended_line",
+        "arguments": {
+          "line_id": "line_013",
+          "reason": "payment_received"
+        },
+        "tool_call_id": null
+      },
+      {
+        "actor": "user",
+        "name": "toggle_airplane_mode",
+        "arguments": {
+          "device_id": "device_013",
+          "enabled": false
+        },
+        "tool_call_id": null
+      }
+    ],
+    "assertions": [
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_013"
+        }
+      },
+      {
+        "name": "assert_line_active",
+        "arguments": {
+          "line_id": "line_013"
+        }
+      },
+      {
+        "name": "assert_bill_paid",
+        "arguments": {
+          "customer_id": "cust_009",
+          "bill_id": "bill_017"
+        }
+      },
+      {
+        "name": "assert_service_connected",
+        "arguments": {
+          "device_id": "device_013"
+        }
+      }
+    ],
+    "required_outputs": [],
+    "max_turns": 40,
+    "max_agent_actions": 30,
+    "tags": [
+      "airplane_mode",
+      "billing",
+      "service",
+      "suspended"
+    ],
+    "difficulty": {
+      "n_subtasks": 2,
+      "subtask_ids": [
+        "airplane_mode_on",
+        "backend_line_suspended_overdue"
+      ],
+      "required_tools": [
+        "make_payment",
+        "resume_suspended_line",
+        "toggle_airplane_mode"
+      ],
+      "who_acts": "both",
+      "persona": "hard"
+    },
+    "line_id": "line_013",
+    "customer_id": "cust_009",
+    "device_id": "device_013"
+  }
+]

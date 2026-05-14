@@ -1,0 +1,952 @@
+{
+  "retail_task_001": [
+    {
+      "task_id": "retail_task_001",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krem37kfffg87ga2776ryz22` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5827, Requested 2079. Please try again in 19.06s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_001",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krem37kfffg87ga2776ryz22` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5860, Requested 2079. Please try again in 19.39s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_001",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_002": [
+    {
+      "task_id": "retail_task_002",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_002",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_002",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_003": [
+    {
+      "task_id": "retail_task_003",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.\", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=exchange_delivered_order_items>{\"order_id\": \"W1937482\", \"item_ids\": [\"item_tshirt_s_red\"], \"new_item_ids\": [\"item_tshirt_m_blue\"], \"payment_method_id\": \"original_payment_method\"}'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_003",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.\", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=exchange_delivered_order_items>{\"order_id\": \"W1937482\", \"item_ids\": [\"item_tshirt_s_red\"], \"new_item_ids\": [\"item_tshirt_m_blue\"], \"payment_method_id\": \"original_payment_method\"}'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_003",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.\", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=exchange_delivered_order_items>{\"order_id\": \"W1937482\", \"item_ids\": [\"item_tshirt_s_red\"], \"new_item_ids\": [\"item_tshirt_m_blue\"], \"payment_method_id\": \"original_payment_method\"}'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_004": [
+    {
+      "task_id": "retail_task_004",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_004",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_004",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krem37kfffg87ga2776ryz22` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5909, Requested 2049. Please try again in 19.58s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_005": [
+    {
+      "task_id": "retail_task_005",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_005",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_005",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_006": [
+    {
+      "task_id": "retail_task_006",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_006",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_006",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_007": [
+    {
+      "task_id": "retail_task_007",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_007",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_007",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_008": [
+    {
+      "task_id": "retail_task_008",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_008",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_008",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_009": [
+    {
+      "task_id": "retail_task_009",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.\", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=get_product_details>{\"product_id\": \"Wireless Headphones Pro (Black)\"} and <function=get_product_details>{\"product_id\": \"Wireless Headphones Standard (Black)\"}'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_009",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.\", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=get_product_details>{\"product_id\": \"Wireless Headphones Pro (Black)\"} and <function=get_product_details>{\"product_id\": \"Wireless Headphones Standard (Black)\"}'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_009",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krem37kfffg87ga2776ryz22` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5923, Requested 2068. Please try again in 19.91s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_010": [
+    {
+      "task_id": "retail_task_010",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_010",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krem37kfffg87ga2776ryz22` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5814, Requested 2078. Please try again in 18.92s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_010",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_011": [
+    {
+      "task_id": "retail_task_011",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_011",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_011",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_012": [
+    {
+      "task_id": "retail_task_012",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_012",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_012",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_013": [
+    {
+      "task_id": "retail_task_013",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_013",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_013",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_014": [
+    {
+      "task_id": "retail_task_014",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_014",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_014",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_015": [
+    {
+      "task_id": "retail_task_015",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_015",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_015",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_016": [
+    {
+      "task_id": "retail_task_016",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_016",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_016",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_017": [
+    {
+      "task_id": "retail_task_017",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_017",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_017",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_018": [
+    {
+      "task_id": "retail_task_018",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_018",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_018",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_019": [
+    {
+      "task_id": "retail_task_019",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_019",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_019",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_020": [
+    {
+      "task_id": "retail_task_020",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_020",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_020",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_021": [
+    {
+      "task_id": "retail_task_021",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_021",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_021",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_022": [
+    {
+      "task_id": "retail_task_022",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.\", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=cancel_pending_order>{\"order_id\": \"W8294031\", \"reason\": \"no longer needed\"}<function\\n<function=modify_pending_order_items>{\"order_id\": \"W2104422\", \"item_ids\": [\"item_yoga_blue_6mm\"], \"new_item_ids\": [\"item_yoga_green_8mm\"], \"payment_method_id\": \"gift_card_1938472\"}<function'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_022",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.\", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=cancel_pending_order>{\"order_id\": \"W8294031\", \"reason\": \"no longer needed\"}<function\\n<function=modify_pending_order_items>{\"order_id\": \"W2104422\", \"item_ids\": [\"item_yoga_blue_6mm\"], \"new_item_ids\": [\"item_yoga_green_8mm\"], \"payment_method_id\": \"gift_card_1938472\"}<function'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_022",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.\", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=cancel_pending_order>{\"order_id\": \"W8294031\", \"reason\": \"no longer needed\"}<function\\n<function=modify_pending_order_items>{\"order_id\": \"W2104422\", \"item_ids\": [\"item_yoga_blue_6mm\"], \"new_item_ids\": [\"item_yoga_green_8mm\"], \"payment_method_id\": \"gift_card_1938472\"}<function'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_023": [
+    {
+      "task_id": "retail_task_023",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_023",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_023",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_024": [
+    {
+      "task_id": "retail_task_024",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_024",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_024",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ],
+  "retail_task_025": [
+    {
+      "task_id": "retail_task_025",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krem37kfffg87ga2776ryz22` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 5848, Requested 2041. Please try again in 18.89s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_025",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01krem37kfffg87ga2776ryz22` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 4373, Requested 2081. Please try again in 4.539999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    },
+    {
+      "task_id": "retail_task_025",
+      "reward": 0,
+      "action_reward": 0,
+      "output_reward": 0,
+      "turns": 0,
+      "tool_calls": 0,
+      "invalid_tool_calls": 0,
+      "failure_reason": "Groq request failed: Error code: 400 - {'error': {'message': \"'messages.2' : for 'role:tool' the following must be satisfied[('messages.2' : property 'tool_name' is unsupported)]\", 'type': 'invalid_request_error'}}",
+      "latency_seconds": null,
+      "failure_class": "wrong_database_state_and_missing_output"
+    }
+  ]
+}

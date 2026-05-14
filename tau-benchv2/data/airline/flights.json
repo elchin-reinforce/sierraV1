@@ -1,0 +1,32 @@
+{
+  "FL1001": {
+    "flight_id": "FL1001",
+    "origin": "BOS",
+    "destination": "LAX",
+    "departure": "2024-03-15T08:00:00",
+    "arrival": "2024-03-15T14:00:00",
+    "seats_available": 12,
+    "price_economy": 299.00,
+    "price_business": 799.00
+  },
+  "FL1002": {
+    "flight_id": "FL1002",
+    "origin": "LAX",
+    "destination": "BOS",
+    "departure": "2024-03-20T16:00:00",
+    "arrival": "2024-03-20T00:30:00",
+    "seats_available": 5,
+    "price_economy": 319.00,
+    "price_business": 849.00
+  },
+  "FL2001": {
+    "flight_id": "FL2001",
+    "origin": "MIA",
+    "destination": "JFK",
+    "departure": "2024-03-18T07:30:00",
+    "arrival": "2024-03-18T10:30:00",
+    "seats_available": 20,
+    "price_economy": 189.00,
+    "price_business": 489.00
+  }
+}

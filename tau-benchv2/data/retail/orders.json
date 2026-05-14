@@ -1,0 +1,484 @@
+{
+  "#W4082615": {
+    "order_id": "#W4082615",
+    "user_id": "mei_patel_7272",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_tshirt_m_blue", "product_id": "prod_tshirt_001", "name": "Classic T-Shirt (Medium, Blue)", "price": 19.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "123 Oak St", "address2": "", "city": "San Francisco", "state": "CA", "country": "USA", "zip": "94102"},
+    "payment_history": [{"payment_method_id": "credit_card_9513926", "amount": 19.99, "status": "charged"}],
+    "created_at": "2024-01-20"
+  },
+  "#W7382910": {
+    "order_id": "#W7382910",
+    "user_id": "yusuf_rossi_9620",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_jeans_30_dark", "product_id": "prod_jeans_002", "name": "Denim Jeans (30, Dark Wash)", "price": 49.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "88 Broadway", "address2": "Apt 4", "city": "New York", "state": "NY", "country": "USA", "zip": "10001"},
+    "payment_history": [{"payment_method_id": "credit_card_5421098", "amount": 49.99, "status": "charged"}],
+    "created_at": "2024-01-10"
+  },
+  "#W1937482": {
+    "order_id": "#W1937482",
+    "user_id": "sofia_chen_3415",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_tshirt_s_red", "product_id": "prod_tshirt_001", "name": "Classic T-Shirt (Small, Red)", "price": 19.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "200 N Michigan Ave", "address2": "Suite 10", "city": "Chicago", "state": "IL", "country": "USA", "zip": "60601"},
+    "payment_history": [{"payment_method_id": "credit_card_3847291", "amount": 19.99, "status": "charged"}],
+    "created_at": "2024-01-05"
+  },
+  "#W5849302": {
+    "order_id": "#W5849302",
+    "user_id": "marcus_johnson_5891",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_shoes_9_white", "product_id": "prod_shoes_003", "name": "Running Shoes (Size 9, White)", "price": 89.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "401 Congress Ave", "address2": "", "city": "Austin", "state": "TX", "country": "USA", "zip": "78701"},
+    "payment_history": [{"payment_method_id": "credit_card_6128347", "amount": 89.99, "status": "charged"}],
+    "created_at": "2024-01-22"
+  },
+  "#W9304872": {
+    "order_id": "#W9304872",
+    "user_id": "aisha_williams_2234",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_wallet_brown_full", "product_id": "prod_wallet_004", "name": "Leather Wallet (Brown, Full Grain)", "price": 59.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "700 Pike St", "address2": "", "city": "Seattle", "state": "WA", "country": "USA", "zip": "98101"},
+    "payment_history": [{"payment_method_id": "paypal_8834521", "amount": 59.99, "status": "charged"}],
+    "created_at": "2024-01-23"
+  },
+  "#W6172839": {
+    "order_id": "#W6172839",
+    "user_id": "noah_garcia_6678",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_headphones_black_pro", "product_id": "prod_headphones_005", "name": "Wireless Headphones (Black, Pro)", "price": 149.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "1200 Brickell Ave", "address2": "Floor 3", "city": "Miami", "state": "FL", "country": "USA", "zip": "33101"},
+    "payment_history": [{"payment_method_id": "credit_card_1029384", "amount": 149.99, "status": "charged"}],
+    "created_at": "2024-01-18"
+  },
+  "#W3948201": {
+    "order_id": "#W3948201",
+    "user_id": "priya_sharma_4491",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_backpack_navy_30l", "product_id": "prod_backpack_008", "name": "Backpack (Navy, 30L)", "price": 74.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "50 Tremont St", "address2": "", "city": "Boston", "state": "MA", "country": "USA", "zip": "02101"},
+    "payment_history": [{"payment_method_id": "credit_card_5067823", "amount": 74.99, "status": "charged"}],
+    "created_at": "2024-01-19"
+  },
+  "#W8192034": {
+    "order_id": "#W8192034",
+    "user_id": "priya_sharma_4491",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_yoga_purple_6mm", "product_id": "prod_yogamat_007", "name": "Yoga Mat (Purple, 6mm)", "price": 29.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "50 Tremont St", "address2": "", "city": "Boston", "state": "MA", "country": "USA", "zip": "02101"},
+    "payment_history": [{"payment_method_id": "paypal_2938471", "amount": 29.99, "status": "charged"}],
+    "created_at": "2024-01-21"
+  },
+  "#W2948301": {
+    "order_id": "#W2948301",
+    "user_id": "liam_nguyen_8812",
+    "status": "processed",
+    "items": [
+      {"item_id": "item_speaker_black_standard", "product_id": "prod_speaker_010", "name": "Bluetooth Speaker (Black, Standard)", "price": 59.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "1600 Glenarm Pl", "address2": "", "city": "Denver", "state": "CO", "country": "USA", "zip": "80201"},
+    "payment_history": [{"payment_method_id": "credit_card_7384920", "amount": 59.99, "status": "charged"}],
+    "created_at": "2024-01-08"
+  },
+  "#W5039182": {
+    "order_id": "#W5039182",
+    "user_id": "emma_kim_3307",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_watch_classic_leather", "product_id": "prod_watch_011", "name": "Watch (Classic, Leather Band)", "price": 129.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "421 SW 5th Ave", "address2": "", "city": "Portland", "state": "OR", "country": "USA", "zip": "97201"},
+    "payment_history": [{"payment_method_id": "paypal_9283741", "amount": 129.99, "status": "charged"}],
+    "created_at": "2024-01-03"
+  },
+  "#W7392841": {
+    "order_id": "#W7392841",
+    "user_id": "carlos_martin_7743",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_waterbottle_blue_24oz", "product_id": "prod_waterbottle_012", "name": "Water Bottle (Blue, 24oz)", "price": 24.99, "quantity": 1},
+      {"item_id": "item_waterbottle_red_24oz", "product_id": "prod_waterbottle_012", "name": "Water Bottle (Red, 24oz)", "price": 24.99, "quantity": 1},
+      {"item_id": "item_waterbottle_green_24oz", "product_id": "prod_waterbottle_012", "name": "Water Bottle (Green, 24oz)", "price": 24.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "2929 N Central Ave", "address2": "", "city": "Phoenix", "state": "AZ", "country": "USA", "zip": "85001"},
+    "payment_history": [{"payment_method_id": "credit_card_4839201", "amount": 74.97, "status": "charged"}],
+    "created_at": "2024-01-01"
+  },
+  "#W1029384": {
+    "order_id": "#W1029384",
+    "user_id": "mei_patel_7272",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_sunglass_aviator_gold", "product_id": "prod_sunglasses_009", "name": "Sunglasses (Aviator, Gold)", "price": 44.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "123 Oak St", "address2": "", "city": "San Francisco", "state": "CA", "country": "USA", "zip": "94102"},
+    "payment_history": [{"payment_method_id": "paypal_4768213", "amount": 44.99, "status": "charged"}],
+    "created_at": "2023-12-15"
+  },
+  "#W3847291": {
+    "order_id": "#W3847291",
+    "user_id": "yusuf_rossi_9620",
+    "status": "cancelled",
+    "items": [
+      {"item_id": "item_coffee_drip_8cup", "product_id": "prod_coffeemaker_006", "name": "Coffee Maker (Drip, 8-Cup)", "price": 44.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "88 Broadway", "address2": "Apt 4", "city": "New York", "state": "NY", "country": "USA", "zip": "10001"},
+    "payment_history": [{"payment_method_id": "credit_card_5421098", "amount": 44.99, "status": "refunded"}],
+    "created_at": "2023-12-20",
+    "cancellation_reason": "no longer needed"
+  },
+  "#W5720183": {
+    "order_id": "#W5720183",
+    "user_id": "sofia_chen_3415",
+    "status": "processed",
+    "items": [
+      {"item_id": "item_yoga_blue_6mm", "product_id": "prod_yogamat_007", "name": "Yoga Mat (Blue, 6mm)", "price": 29.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "200 N Michigan Ave", "address2": "Suite 10", "city": "Chicago", "state": "IL", "country": "USA", "zip": "60601"},
+    "payment_history": [{"payment_method_id": "gift_card_7291034", "amount": 29.99, "status": "charged"}],
+    "created_at": "2024-01-15"
+  },
+  "#W9182034": {
+    "order_id": "#W9182034",
+    "user_id": "marcus_johnson_5891",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_backpack_gray_20l", "product_id": "prod_backpack_008", "name": "Backpack (Gray, 20L)", "price": 59.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "401 Congress Ave", "address2": "", "city": "Austin", "state": "TX", "country": "USA", "zip": "78701"},
+    "payment_history": [{"payment_method_id": "credit_card_6128347", "amount": 59.99, "status": "charged"}],
+    "created_at": "2023-12-28"
+  },
+  "#W4829301": {
+    "order_id": "#W4829301",
+    "user_id": "aisha_williams_2234",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_coffee_drip_4cup", "product_id": "prod_coffeemaker_006", "name": "Coffee Maker (Drip, 4-Cup)", "price": 34.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "700 Pike St", "address2": "", "city": "Seattle", "state": "WA", "country": "USA", "zip": "98101"},
+    "payment_history": [{"payment_method_id": "paypal_8834521", "amount": 34.99, "status": "charged"}],
+    "created_at": "2023-12-10"
+  },
+  "#W1738291": {
+    "order_id": "#W1738291",
+    "user_id": "noah_garcia_6678",
+    "status": "cancelled",
+    "items": [
+      {"item_id": "item_watch_sport_rubber", "product_id": "prod_watch_011", "name": "Watch (Sport, Rubber Band)", "price": 99.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "1200 Brickell Ave", "address2": "Floor 3", "city": "Miami", "state": "FL", "country": "USA", "zip": "33101"},
+    "payment_history": [{"payment_method_id": "credit_card_1029384", "amount": 99.99, "status": "refunded"}],
+    "created_at": "2023-12-18",
+    "cancellation_reason": "ordered by mistake"
+  },
+  "#W8294031": {
+    "order_id": "#W8294031",
+    "user_id": "emma_kim_3307",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_jeans_32_light", "product_id": "prod_jeans_002", "name": "Denim Jeans (32, Light Wash)", "price": 54.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "421 SW 5th Ave", "address2": "", "city": "Portland", "state": "OR", "country": "USA", "zip": "97201"},
+    "payment_history": [{"payment_method_id": "gift_card_1938472", "amount": 54.99, "status": "charged"}],
+    "created_at": "2024-01-24"
+  },
+  "#W3019284": {
+    "order_id": "#W3019284",
+    "user_id": "carlos_martin_7743",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_shoes_10_black", "product_id": "prod_shoes_003", "name": "Running Shoes (Size 10, Black)", "price": 89.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "2929 N Central Ave", "address2": "", "city": "Phoenix", "state": "AZ", "country": "USA", "zip": "85001"},
+    "payment_history": [{"payment_method_id": "credit_card_4839201", "amount": 89.99, "status": "charged"}],
+    "created_at": "2024-01-25"
+  },
+  "#W6482931": {
+    "order_id": "#W6482931",
+    "user_id": "liam_nguyen_8812",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_tshirt_l_blue", "product_id": "prod_tshirt_001", "name": "Classic T-Shirt (Large, Blue)", "price": 21.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "1600 Glenarm Pl", "address2": "", "city": "Denver", "state": "CO", "country": "USA", "zip": "80201"},
+    "payment_history": [{"payment_method_id": "credit_card_7384920", "amount": 21.99, "status": "charged"}],
+    "created_at": "2023-12-22"
+  },
+  "#W2104411": {
+    "order_id": "#W2104411",
+    "user_id": "olivia_brown_1122",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_phonecase_clear", "product_id": "prod_phonecase_016", "name": "Phone Case (Clear)", "price": 14.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "555 Peachtree Rd", "address2": "", "city": "Atlanta", "state": "GA", "country": "USA", "zip": "30301"},
+    "payment_history": [{"payment_method_id": "paypal_5563728", "amount": 14.99, "status": "charged"}],
+    "created_at": "2023-12-05"
+  },
+  "#W2104412": {
+    "order_id": "#W2104412",
+    "user_id": "jin_park_5544",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_hairdryer_black_1500w", "product_id": "prod_hairdryer_013", "name": "Hair Dryer (Black, 1500W)", "price": 39.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "1010 Wilshire Blvd", "address2": "", "city": "Los Angeles", "state": "CA", "country": "USA", "zip": "90017"},
+    "payment_history": [{"payment_method_id": "credit_card_2233445", "amount": 39.99, "status": "charged"}],
+    "created_at": "2024-01-26"
+  },
+  "#W2104413": {
+    "order_id": "#W2104413",
+    "user_id": "nina_petrov_7711",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_desklamp_black", "product_id": "prod_desklamp_017", "name": "Desk Lamp (Matte Black)", "price": 49.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "300 Lake St", "address2": "", "city": "Minneapolis", "state": "MN", "country": "USA", "zip": "55401"},
+    "payment_history": [{"payment_method_id": "gift_card_9988776", "amount": 49.99, "status": "charged"}],
+    "created_at": "2024-01-27"
+  },
+  "#W2104414": {
+    "order_id": "#W2104414",
+    "user_id": "fatima_alvarez_8899",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_tshirt_s_red", "product_id": "prod_tshirt_001", "name": "Classic T-Shirt (Small, Red)", "price": 19.99, "quantity": 1},
+      {"item_id": "item_tshirt_m_red", "product_id": "prod_tshirt_001", "name": "Classic T-Shirt (Medium, Red)", "price": 19.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "1400 Magazine St", "address2": "", "city": "New Orleans", "state": "LA", "country": "USA", "zip": "70130"},
+    "payment_history": [{"payment_method_id": "credit_card_7799334", "amount": 39.98, "status": "charged"}],
+    "created_at": "2024-01-28"
+  },
+  "#W2104415": {
+    "order_id": "#W2104415",
+    "user_id": "sofia_chen_3415",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_watch_classic_metal", "product_id": "prod_watch_011", "name": "Watch (Classic, Metal Band)", "price": 149.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "200 N Michigan Ave", "address2": "Suite 10", "city": "Chicago", "state": "IL", "country": "USA", "zip": "60601"},
+    "payment_history": [{"payment_method_id": "credit_card_3847291", "amount": 149.99, "status": "charged"}],
+    "created_at": "2023-11-15"
+  },
+  "#W2104416": {
+    "order_id": "#W2104416",
+    "user_id": "david_okonkwo_3366",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_waterbottle_red_24oz", "product_id": "prod_waterbottle_012", "name": "Water Bottle (Red, 24oz)", "price": 24.99, "quantity": 1},
+      {"item_id": "item_waterbottle_blue_24oz", "product_id": "prod_waterbottle_012", "name": "Water Bottle (Blue, 24oz)", "price": 24.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "920 Massachusetts Ave", "address2": "Apt 7", "city": "Cambridge", "state": "MA", "country": "USA", "zip": "02139"},
+    "payment_history": [{"payment_method_id": "credit_card_1100221", "amount": 49.98, "status": "charged"}],
+    "created_at": "2023-11-20"
+  },
+  "#W2104417": {
+    "order_id": "#W2104417",
+    "user_id": "olivia_brown_1122",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_wallet_brown_full", "product_id": "prod_wallet_004", "name": "Leather Wallet (Brown, Full Grain)", "price": 59.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "555 Peachtree Rd", "address2": "", "city": "Atlanta", "state": "GA", "country": "USA", "zip": "30301"},
+    "payment_history": [{"payment_method_id": "paypal_5563728", "amount": 59.99, "status": "charged"}],
+    "created_at": "2023-12-12"
+  },
+  "#W2104418": {
+    "order_id": "#W2104418",
+    "user_id": "fatima_alvarez_8899",
+    "status": "processed",
+    "items": [
+      {"item_id": "item_laptop_16_512", "product_id": "prod_laptop_014", "name": "Laptop (16GB RAM, 512GB)", "price": 999.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "1400 Magazine St", "address2": "", "city": "New Orleans", "state": "LA", "country": "USA", "zip": "70130"},
+    "payment_history": [{"payment_method_id": "credit_card_7799334", "amount": 999.99, "status": "charged"}],
+    "created_at": "2024-01-12"
+  },
+  "#W2104419": {
+    "order_id": "#W2104419",
+    "user_id": "nina_petrov_7711",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_sunglass_aviator_gold", "product_id": "prod_sunglasses_009", "name": "Sunglasses (Aviator, Gold)", "price": 44.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "300 Lake St", "address2": "", "city": "Minneapolis", "state": "MN", "country": "USA", "zip": "55401"},
+    "payment_history": [{"payment_method_id": "credit_card_8855221", "amount": 44.99, "status": "charged"}],
+    "created_at": "2024-01-29"
+  },
+  "#W2104420": {
+    "order_id": "#W2104420",
+    "user_id": "david_okonkwo_3366",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_hairdryer_black_1500w", "product_id": "prod_hairdryer_013", "name": "Hair Dryer (Black, 1500W)", "price": 39.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "920 Massachusetts Ave", "address2": "Apt 7", "city": "Cambridge", "state": "MA", "country": "USA", "zip": "02139"},
+    "payment_history": [{"payment_method_id": "credit_card_1100221", "amount": 39.99, "status": "charged"}],
+    "created_at": "2023-12-04"
+  },
+  "#W2104421": {
+    "order_id": "#W2104421",
+    "user_id": "jin_park_5544",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_tablet_10_64", "product_id": "prod_tablet_015", "name": "Tablet (10in, 64GB)", "price": 329.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "1010 Wilshire Blvd", "address2": "", "city": "Los Angeles", "state": "CA", "country": "USA", "zip": "90017"},
+    "payment_history": [{"payment_method_id": "credit_card_2233445", "amount": 329.99, "status": "charged"}],
+    "created_at": "2023-12-08"
+  },
+  "#W2104422": {
+    "order_id": "#W2104422",
+    "user_id": "emma_kim_3307",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_yoga_blue_6mm", "product_id": "prod_yogamat_007", "name": "Yoga Mat (Blue, 6mm)", "price": 29.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "421 SW 5th Ave", "address2": "", "city": "Portland", "state": "OR", "country": "USA", "zip": "97201"},
+    "payment_history": [{"payment_method_id": "gift_card_1938472", "amount": 29.99, "status": "charged"}],
+    "created_at": "2024-01-30"
+  },
+  "#W2104423": {
+    "order_id": "#W2104423",
+    "user_id": "olivia_brown_1122",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_backpack_navy_30l", "product_id": "prod_backpack_008", "name": "Backpack (Navy, 30L)", "price": 74.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "555 Peachtree Rd", "address2": "", "city": "Atlanta", "state": "GA", "country": "USA", "zip": "30301"},
+    "payment_history": [{"payment_method_id": "paypal_5563728", "amount": 74.99, "status": "charged"}],
+    "created_at": "2024-01-31"
+  },
+  "#W2104424": {
+    "order_id": "#W2104424",
+    "user_id": "david_okonkwo_3366",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_phonecase_clear", "product_id": "prod_phonecase_016", "name": "Phone Case (Clear)", "price": 14.99, "quantity": 1},
+      {"item_id": "item_phonecase_black", "product_id": "prod_phonecase_016", "name": "Phone Case (Black)", "price": 14.99, "quantity": 1},
+      {"item_id": "item_phonecase_blue", "product_id": "prod_phonecase_016", "name": "Phone Case (Blue)", "price": 14.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "920 Massachusetts Ave", "address2": "Apt 7", "city": "Cambridge", "state": "MA", "country": "USA", "zip": "02139"},
+    "payment_history": [{"payment_method_id": "paypal_3322110", "amount": 44.97, "status": "charged"}],
+    "created_at": "2023-12-01"
+  },
+  "#W2104425": {
+    "order_id": "#W2104425",
+    "user_id": "nina_petrov_7711",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_phonecase_blue", "product_id": "prod_phonecase_016", "name": "Phone Case (Blue)", "price": 14.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "300 Lake St", "address2": "", "city": "Minneapolis", "state": "MN", "country": "USA", "zip": "55401"},
+    "payment_history": [{"payment_method_id": "credit_card_8855221", "amount": 14.99, "status": "charged"}],
+    "created_at": "2023-11-25"
+  },
+  "#W2104426": {
+    "order_id": "#W2104426",
+    "user_id": "fatima_alvarez_8899",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_camera_mirrorless_standard", "product_id": "prod_camera_019", "name": "Camera (Mirrorless, Standard)", "price": 599.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "1400 Magazine St", "address2": "", "city": "New Orleans", "state": "LA", "country": "USA", "zip": "70130"},
+    "payment_history": [{"payment_method_id": "paypal_4488221", "amount": 599.99, "status": "charged"}],
+    "created_at": "2023-11-10"
+  },
+  "#W2104427": {
+    "order_id": "#W2104427",
+    "user_id": "jin_park_5544",
+    "status": "cancelled",
+    "items": [
+      {"item_id": "item_bookshelf_3_walnut", "product_id": "prod_bookshelf_018", "name": "Bookshelf (3-Shelf, Walnut)", "price": 89.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "1010 Wilshire Blvd", "address2": "", "city": "Los Angeles", "state": "CA", "country": "USA", "zip": "90017"},
+    "payment_history": [{"payment_method_id": "credit_card_2233445", "amount": 89.99, "status": "refunded"}],
+    "created_at": "2023-12-30",
+    "cancellation_reason": "no longer needed"
+  },
+  "#W2104428": {
+    "order_id": "#W2104428",
+    "user_id": "olivia_brown_1122",
+    "status": "processed",
+    "items": [
+      {"item_id": "item_airpurifier_small", "product_id": "prod_airpurifier_020", "name": "Air Purifier (Small Room)", "price": 99.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "555 Peachtree Rd", "address2": "", "city": "Atlanta", "state": "GA", "country": "USA", "zip": "30301"},
+    "payment_history": [{"payment_method_id": "paypal_5563728", "amount": 99.99, "status": "charged"}],
+    "created_at": "2024-01-14"
+  },
+  "#W2104429": {
+    "order_id": "#W2104429",
+    "user_id": "david_okonkwo_3366",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_laptop_16_1tb", "product_id": "prod_laptop_014", "name": "Laptop (16GB RAM, 1TB)", "price": 1199.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "920 Massachusetts Ave", "address2": "Apt 7", "city": "Cambridge", "state": "MA", "country": "USA", "zip": "02139"},
+    "payment_history": [{"payment_method_id": "credit_card_1100221", "amount": 1199.99, "status": "charged"}],
+    "created_at": "2024-02-01"
+  },
+  "#W2104430": {
+    "order_id": "#W2104430",
+    "user_id": "nina_petrov_7711",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_watch_sport_metal", "product_id": "prod_watch_011", "name": "Watch (Sport, Metal Band)", "price": 129.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "300 Lake St", "address2": "", "city": "Minneapolis", "state": "MN", "country": "USA", "zip": "55401"},
+    "payment_history": [{"payment_method_id": "credit_card_8855221", "amount": 129.99, "status": "charged"}],
+    "created_at": "2023-10-20"
+  },
+  "#W2104431": {
+    "order_id": "#W2104431",
+    "user_id": "yusuf_rossi_9620",
+    "status": "pending",
+    "items": [
+      {"item_id": "item_tablet_13_128", "product_id": "prod_tablet_015", "name": "Tablet (13in, 128GB)", "price": 549.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "88 Broadway", "address2": "Apt 4", "city": "New York", "state": "NY", "country": "USA", "zip": "10001"},
+    "payment_history": [{"payment_method_id": "credit_card_5421098", "amount": 549.99, "status": "charged"}],
+    "created_at": "2024-02-02"
+  },
+  "#W2104432": {
+    "order_id": "#W2104432",
+    "user_id": "marcus_johnson_5891",
+    "status": "delivered",
+    "items": [
+      {"item_id": "item_speaker_black_mini", "product_id": "prod_speaker_010", "name": "Bluetooth Speaker (Black, Mini)", "price": 29.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "401 Congress Ave", "address2": "", "city": "Austin", "state": "TX", "country": "USA", "zip": "78701"},
+    "payment_history": [{"payment_method_id": "credit_card_6128347", "amount": 29.99, "status": "charged"}],
+    "created_at": "2023-10-15"
+  },
+  "#W2104433": {
+    "order_id": "#W2104433",
+    "user_id": "liam_nguyen_8812",
+    "status": "processed",
+    "items": [
+      {"item_id": "item_bookshelf_5_walnut", "product_id": "prod_bookshelf_018", "name": "Bookshelf (5-Shelf, Walnut)", "price": 149.99, "quantity": 1}
+    ],
+    "shipping_address": {"address1": "1600 Glenarm Pl", "address2": "", "city": "Denver", "state": "CO", "country": "USA", "zip": "80201"},
+    "payment_history": [{"payment_method_id": "credit_card_7384920", "amount": 149.99, "status": "charged"}],
+    "created_at": "2024-01-09"
+  }
+}

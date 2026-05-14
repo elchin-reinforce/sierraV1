@@ -1,0 +1,1264 @@
+{
+  "customers": {
+    "cust_001": {
+      "name": "Olivia Martinez",
+      "email": "olivia.martinez@example.com",
+      "phone_numbers": ["+14155550101"],
+      "zip": "94103",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_001", "type": "credit_card", "last4": "1234"}
+      ]
+    },
+    "cust_002": {
+      "name": "Liam Johnson",
+      "email": "liam.johnson@example.com",
+      "phone_numbers": ["+12125550102", "+12125550152"],
+      "zip": "10011",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_002", "type": "credit_card", "last4": "5678"},
+        {"id": "pm_003", "type": "debit_card", "last4": "9911"}
+      ]
+    },
+    "cust_003": {
+      "name": "Emma Williams",
+      "email": "emma.williams@example.com",
+      "phone_numbers": ["+13105550103"],
+      "zip": "90210",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_004", "type": "credit_card", "last4": "2233"}
+      ]
+    },
+    "cust_004": {
+      "name": "Noah Brown",
+      "email": "noah.brown@example.com",
+      "phone_numbers": ["+16175550104", "+16175550154"],
+      "zip": "02118",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_005", "type": "credit_card", "last4": "4422"}
+      ]
+    },
+    "cust_005": {
+      "name": "Ava Jones",
+      "email": "ava.jones@example.com",
+      "phone_numbers": ["+17735550105"],
+      "zip": "60614",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_006", "type": "credit_card", "last4": "7788"}
+      ]
+    },
+    "cust_006": {
+      "name": "Ethan Garcia",
+      "email": "ethan.garcia@example.com",
+      "phone_numbers": ["+12065550106", "+12065550156"],
+      "zip": "98101",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_007", "type": "debit_card", "last4": "3344"}
+      ]
+    },
+    "cust_007": {
+      "name": "Sophia Miller",
+      "email": "sophia.miller@example.com",
+      "phone_numbers": ["+15125550107"],
+      "zip": "78701",
+      "account_status": "suspended",
+      "payment_methods": [
+        {"id": "pm_008", "type": "credit_card", "last4": "9090"}
+      ]
+    },
+    "cust_008": {
+      "name": "Mason Davis",
+      "email": "mason.davis@example.com",
+      "phone_numbers": ["+13035550108", "+13035550158"],
+      "zip": "80202",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_009", "type": "credit_card", "last4": "1122"}
+      ]
+    },
+    "cust_009": {
+      "name": "Isabella Rodriguez",
+      "email": "isabella.rodriguez@example.com",
+      "phone_numbers": ["+13055550109"],
+      "zip": "33101",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_010", "type": "credit_card", "last4": "5566"}
+      ]
+    },
+    "cust_010": {
+      "name": "James Wilson",
+      "email": "james.wilson@example.com",
+      "phone_numbers": ["+14045550110", "+14045550160"],
+      "zip": "30303",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_011", "type": "credit_card", "last4": "8877"},
+        {"id": "pm_012", "type": "credit_card", "last4": "6655"}
+      ]
+    },
+    "cust_011": {
+      "name": "Mia Anderson",
+      "email": "mia.anderson@example.com",
+      "phone_numbers": ["+16025550111"],
+      "zip": "85004",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_013", "type": "debit_card", "last4": "4411"}
+      ]
+    },
+    "cust_012": {
+      "name": "Benjamin Thomas",
+      "email": "benjamin.thomas@example.com",
+      "phone_numbers": ["+17025550112", "+17025550162"],
+      "zip": "89109",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_014", "type": "credit_card", "last4": "3300"}
+      ]
+    },
+    "cust_013": {
+      "name": "Charlotte Moore",
+      "email": "charlotte.moore@example.com",
+      "phone_numbers": ["+15035550113"],
+      "zip": "97201",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_015", "type": "credit_card", "last4": "2244"}
+      ]
+    },
+    "cust_014": {
+      "name": "Lucas Taylor",
+      "email": "lucas.taylor@example.com",
+      "phone_numbers": ["+16025550114", "+16025550164"],
+      "zip": "85016",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_016", "type": "credit_card", "last4": "7799"}
+      ]
+    },
+    "cust_015": {
+      "name": "Amelia Jackson",
+      "email": "amelia.jackson@example.com",
+      "phone_numbers": ["+19145550115"],
+      "zip": "10601",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_017", "type": "credit_card", "last4": "1010"}
+      ]
+    },
+    "cust_016": {
+      "name": "Henry White",
+      "email": "henry.white@example.com",
+      "phone_numbers": ["+12155550116", "+12155550166"],
+      "zip": "19103",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_018", "type": "credit_card", "last4": "5050"}
+      ]
+    },
+    "cust_017": {
+      "name": "Harper Harris",
+      "email": "harper.harris@example.com",
+      "phone_numbers": ["+18185550117"],
+      "zip": "91601",
+      "account_status": "suspended",
+      "payment_methods": [
+        {"id": "pm_019", "type": "debit_card", "last4": "6060"}
+      ]
+    },
+    "cust_018": {
+      "name": "Alexander Martin",
+      "email": "alexander.martin@example.com",
+      "phone_numbers": ["+19495550118", "+19495550168"],
+      "zip": "92614",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_020", "type": "credit_card", "last4": "7070"}
+      ]
+    },
+    "cust_019": {
+      "name": "Evelyn Thompson",
+      "email": "evelyn.thompson@example.com",
+      "phone_numbers": ["+16195550119"],
+      "zip": "92101",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_021", "type": "credit_card", "last4": "8080"}
+      ]
+    },
+    "cust_020": {
+      "name": "Daniel Garcia",
+      "email": "daniel.garcia@example.com",
+      "phone_numbers": ["+17865550120", "+17865550170"],
+      "zip": "33126",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_022", "type": "credit_card", "last4": "9090"}
+      ]
+    },
+    "cust_021": {
+      "name": "Abigail Martinez",
+      "email": "abigail.martinez@example.com",
+      "phone_numbers": ["+12145550121"],
+      "zip": "75201",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_023", "type": "credit_card", "last4": "1313"}
+      ]
+    },
+    "cust_022": {
+      "name": "Matthew Robinson",
+      "email": "matthew.robinson@example.com",
+      "phone_numbers": ["+17135550122", "+17135550172"],
+      "zip": "77002",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_024", "type": "credit_card", "last4": "1414"}
+      ]
+    },
+    "cust_023": {
+      "name": "Emily Clark",
+      "email": "emily.clark@example.com",
+      "phone_numbers": ["+14155550123"],
+      "zip": "94110",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_025", "type": "credit_card", "last4": "1515"}
+      ]
+    },
+    "cust_024": {
+      "name": "David Rodriguez",
+      "email": "david.rodriguez@example.com",
+      "phone_numbers": ["+19175550124", "+19175550174"],
+      "zip": "10001",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_026", "type": "credit_card", "last4": "1616"}
+      ]
+    },
+    "cust_025": {
+      "name": "Elizabeth Lewis",
+      "email": "elizabeth.lewis@example.com",
+      "phone_numbers": ["+18475550125"],
+      "zip": "60201",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_027", "type": "debit_card", "last4": "1717"}
+      ]
+    },
+    "cust_026": {
+      "name": "Joseph Walker",
+      "email": "joseph.walker@example.com",
+      "phone_numbers": ["+12485550126", "+12485550176"],
+      "zip": "48201",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_028", "type": "credit_card", "last4": "1818"}
+      ]
+    },
+    "cust_027": {
+      "name": "Sofia Hall",
+      "email": "sofia.hall@example.com",
+      "phone_numbers": ["+16465550127"],
+      "zip": "11201",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_029", "type": "credit_card", "last4": "1919"}
+      ]
+    },
+    "cust_028": {
+      "name": "Samuel Allen",
+      "email": "samuel.allen@example.com",
+      "phone_numbers": ["+19725550128", "+19725550178"],
+      "zip": "75038",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_030", "type": "credit_card", "last4": "2020"}
+      ]
+    },
+    "cust_029": {
+      "name": "Avery Young",
+      "email": "avery.young@example.com",
+      "phone_numbers": ["+19045550129"],
+      "zip": "32202",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_031", "type": "credit_card", "last4": "2121"}
+      ]
+    },
+    "cust_030": {
+      "name": "Christopher King",
+      "email": "christopher.king@example.com",
+      "phone_numbers": ["+15125550130", "+15125550180"],
+      "zip": "78704",
+      "account_status": "active",
+      "payment_methods": [
+        {"id": "pm_032", "type": "credit_card", "last4": "2222"}
+      ]
+    }
+  },
+  "lines": {
+    "line_001": {
+      "customer_id": "cust_001",
+      "phone_number": "+14155550101",
+      "status": "active",
+      "plan_id": "plan_unlimited_basic",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 3.2,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_002": {
+      "customer_id": "cust_002",
+      "phone_number": "+12125550102",
+      "status": "active",
+      "plan_id": "plan_family_20gb",
+      "roaming_enabled_backend": true,
+      "data_used_gb": 8.4,
+      "data_limit_gb": 20,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_003": {
+      "customer_id": "cust_002",
+      "phone_number": "+12125550152",
+      "status": "active",
+      "plan_id": "plan_family_20gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 5.1,
+      "data_limit_gb": 20,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_004": {
+      "customer_id": "cust_003",
+      "phone_number": "+13105550103",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 6.8,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_005": {
+      "customer_id": "cust_004",
+      "phone_number": "+16175550104",
+      "status": "active",
+      "plan_id": "plan_unlimited_premium",
+      "roaming_enabled_backend": true,
+      "data_used_gb": 11.2,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_006": {
+      "customer_id": "cust_004",
+      "phone_number": "+16175550154",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 4.5,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_007": {
+      "customer_id": "cust_005",
+      "phone_number": "+17735550105",
+      "status": "active",
+      "plan_id": "plan_prepaid_5gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 2.1,
+      "data_limit_gb": 5,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_008": {
+      "customer_id": "cust_006",
+      "phone_number": "+12065550106",
+      "status": "active",
+      "plan_id": "plan_unlimited_basic",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 7.9,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_009": {
+      "customer_id": "cust_006",
+      "phone_number": "+12065550156",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 3.3,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_010": {
+      "customer_id": "cust_007",
+      "phone_number": "+15125550107",
+      "status": "suspended",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 0.0,
+      "data_limit_gb": 10,
+      "suspended_reason": "overdue_payment",
+      "contract_expired": false
+    },
+    "line_011": {
+      "customer_id": "cust_008",
+      "phone_number": "+13035550108",
+      "status": "active",
+      "plan_id": "plan_unlimited_basic",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 5.6,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_012": {
+      "customer_id": "cust_008",
+      "phone_number": "+13035550158",
+      "status": "active",
+      "plan_id": "plan_prepaid_5gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 1.8,
+      "data_limit_gb": 5,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_013": {
+      "customer_id": "cust_009",
+      "phone_number": "+13055550109",
+      "status": "active",
+      "plan_id": "plan_unlimited_premium",
+      "roaming_enabled_backend": true,
+      "data_used_gb": 9.7,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_014": {
+      "customer_id": "cust_010",
+      "phone_number": "+14045550110",
+      "status": "active",
+      "plan_id": "plan_family_20gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 12.0,
+      "data_limit_gb": 20,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_015": {
+      "customer_id": "cust_010",
+      "phone_number": "+14045550160",
+      "status": "active",
+      "plan_id": "plan_family_20gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 4.2,
+      "data_limit_gb": 20,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_016": {
+      "customer_id": "cust_011",
+      "phone_number": "+16025550111",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 7.4,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_017": {
+      "customer_id": "cust_012",
+      "phone_number": "+17025550112",
+      "status": "active",
+      "plan_id": "plan_unlimited_basic",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 6.1,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_018": {
+      "customer_id": "cust_012",
+      "phone_number": "+17025550162",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 2.7,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_019": {
+      "customer_id": "cust_013",
+      "phone_number": "+15035550113",
+      "status": "active",
+      "plan_id": "plan_unlimited_premium",
+      "roaming_enabled_backend": true,
+      "data_used_gb": 10.4,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_020": {
+      "customer_id": "cust_014",
+      "phone_number": "+16025550114",
+      "status": "active",
+      "plan_id": "plan_unlimited_basic",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 5.5,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_021": {
+      "customer_id": "cust_014",
+      "phone_number": "+16025550164",
+      "status": "cancelled",
+      "plan_id": "plan_prepaid_5gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 0.0,
+      "data_limit_gb": 5,
+      "suspended_reason": null,
+      "contract_expired": true
+    },
+    "line_022": {
+      "customer_id": "cust_015",
+      "phone_number": "+19145550115",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 8.8,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_023": {
+      "customer_id": "cust_016",
+      "phone_number": "+12155550116",
+      "status": "active",
+      "plan_id": "plan_unlimited_basic",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 4.4,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_024": {
+      "customer_id": "cust_016",
+      "phone_number": "+12155550166",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 3.6,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_025": {
+      "customer_id": "cust_017",
+      "phone_number": "+18185550117",
+      "status": "suspended",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 0.0,
+      "data_limit_gb": 10,
+      "suspended_reason": "overdue_payment",
+      "contract_expired": false
+    },
+    "line_026": {
+      "customer_id": "cust_018",
+      "phone_number": "+19495550118",
+      "status": "active",
+      "plan_id": "plan_family_20gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 9.0,
+      "data_limit_gb": 20,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_027": {
+      "customer_id": "cust_018",
+      "phone_number": "+19495550168",
+      "status": "active",
+      "plan_id": "plan_family_20gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 6.3,
+      "data_limit_gb": 20,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_028": {
+      "customer_id": "cust_019",
+      "phone_number": "+16195550119",
+      "status": "active",
+      "plan_id": "plan_unlimited_basic",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 7.7,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_029": {
+      "customer_id": "cust_020",
+      "phone_number": "+17865550120",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": true,
+      "data_used_gb": 5.9,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_030": {
+      "customer_id": "cust_020",
+      "phone_number": "+17865550170",
+      "status": "active",
+      "plan_id": "plan_prepaid_5gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 2.4,
+      "data_limit_gb": 5,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_031": {
+      "customer_id": "cust_021",
+      "phone_number": "+12145550121",
+      "status": "active",
+      "plan_id": "plan_unlimited_premium",
+      "roaming_enabled_backend": true,
+      "data_used_gb": 8.1,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_032": {
+      "customer_id": "cust_022",
+      "phone_number": "+17135550122",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 5.0,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_033": {
+      "customer_id": "cust_022",
+      "phone_number": "+17135550172",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 3.7,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_034": {
+      "customer_id": "cust_023",
+      "phone_number": "+14155550123",
+      "status": "active",
+      "plan_id": "plan_unlimited_basic",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 4.8,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_035": {
+      "customer_id": "cust_024",
+      "phone_number": "+19175550124",
+      "status": "active",
+      "plan_id": "plan_unlimited_premium",
+      "roaming_enabled_backend": true,
+      "data_used_gb": 9.4,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_036": {
+      "customer_id": "cust_024",
+      "phone_number": "+19175550174",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 6.7,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_037": {
+      "customer_id": "cust_025",
+      "phone_number": "+18475550125",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 7.2,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_038": {
+      "customer_id": "cust_026",
+      "phone_number": "+12485550126",
+      "status": "active",
+      "plan_id": "plan_family_20gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 10.5,
+      "data_limit_gb": 20,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_039": {
+      "customer_id": "cust_026",
+      "phone_number": "+12485550176",
+      "status": "active",
+      "plan_id": "plan_family_20gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 7.6,
+      "data_limit_gb": 20,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_040": {
+      "customer_id": "cust_027",
+      "phone_number": "+16465550127",
+      "status": "active",
+      "plan_id": "plan_unlimited_basic",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 6.0,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_041": {
+      "customer_id": "cust_028",
+      "phone_number": "+19725550128",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 4.9,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_042": {
+      "customer_id": "cust_028",
+      "phone_number": "+19725550178",
+      "status": "suspended",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 0.0,
+      "data_limit_gb": 10,
+      "suspended_reason": "contract_expired",
+      "contract_expired": true
+    },
+    "line_043": {
+      "customer_id": "cust_029",
+      "phone_number": "+19045550129",
+      "status": "active",
+      "plan_id": "plan_unlimited_basic",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 5.4,
+      "data_limit_gb": 999,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_044": {
+      "customer_id": "cust_030",
+      "phone_number": "+15125550130",
+      "status": "active",
+      "plan_id": "plan_family_20gb",
+      "roaming_enabled_backend": true,
+      "data_used_gb": 8.6,
+      "data_limit_gb": 20,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_045": {
+      "customer_id": "cust_030",
+      "phone_number": "+15125550180",
+      "status": "active",
+      "plan_id": "plan_family_20gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 5.7,
+      "data_limit_gb": 20,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_046": {
+      "customer_id": "cust_001",
+      "phone_number": "+14155550151",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 3.9,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_047": {
+      "customer_id": "cust_003",
+      "phone_number": "+13105550153",
+      "status": "active",
+      "plan_id": "plan_prepaid_5gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 1.5,
+      "data_limit_gb": 5,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_048": {
+      "customer_id": "cust_005",
+      "phone_number": "+17735550155",
+      "status": "active",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 4.0,
+      "data_limit_gb": 10,
+      "suspended_reason": null,
+      "contract_expired": false
+    },
+    "line_049": {
+      "customer_id": "cust_011",
+      "phone_number": "+16025550161",
+      "status": "suspended",
+      "plan_id": "plan_data_10gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 0.0,
+      "data_limit_gb": 10,
+      "suspended_reason": "overdue_payment",
+      "contract_expired": false
+    },
+    "line_050": {
+      "customer_id": "cust_023",
+      "phone_number": "+14155550173",
+      "status": "active",
+      "plan_id": "plan_prepaid_5gb",
+      "roaming_enabled_backend": false,
+      "data_used_gb": 2.2,
+      "data_limit_gb": 5,
+      "suspended_reason": null,
+      "contract_expired": false
+    }
+  },
+  "plans": {
+    "plan_unlimited_basic": {
+      "name": "Unlimited Basic",
+      "monthly_price_usd": 60.0,
+      "data_gb": 999,
+      "unlimited": true,
+      "includes_roaming": false
+    },
+    "plan_unlimited_premium": {
+      "name": "Unlimited Premium",
+      "monthly_price_usd": 90.0,
+      "data_gb": 999,
+      "unlimited": true,
+      "includes_roaming": true
+    },
+    "plan_data_10gb": {
+      "name": "Data 10GB",
+      "monthly_price_usd": 40.0,
+      "data_gb": 10,
+      "unlimited": false,
+      "includes_roaming": false
+    },
+    "plan_data_20gb": {
+      "name": "Data 20GB",
+      "monthly_price_usd": 55.0,
+      "data_gb": 20,
+      "unlimited": false,
+      "includes_roaming": false
+    },
+    "plan_family_20gb": {
+      "name": "Family 20GB",
+      "monthly_price_usd": 75.0,
+      "data_gb": 20,
+      "unlimited": false,
+      "includes_roaming": false
+    },
+    "plan_family_unlimited": {
+      "name": "Family Unlimited",
+      "monthly_price_usd": 120.0,
+      "data_gb": 999,
+      "unlimited": true,
+      "includes_roaming": true
+    },
+    "plan_prepaid_5gb": {
+      "name": "Prepaid 5GB",
+      "monthly_price_usd": 25.0,
+      "data_gb": 5,
+      "unlimited": false,
+      "includes_roaming": false
+    },
+    "plan_prepaid_unlimited": {
+      "name": "Prepaid Unlimited",
+      "monthly_price_usd": 50.0,
+      "data_gb": 999,
+      "unlimited": true,
+      "includes_roaming": false
+    },
+    "plan_business_basic": {
+      "name": "Business Basic",
+      "monthly_price_usd": 70.0,
+      "data_gb": 15,
+      "unlimited": false,
+      "includes_roaming": true
+    },
+    "plan_business_pro": {
+      "name": "Business Pro",
+      "monthly_price_usd": 110.0,
+      "data_gb": 999,
+      "unlimited": true,
+      "includes_roaming": true
+    }
+  },
+  "bills": {
+    "bill_001": {
+      "customer_id": "cust_001",
+      "amount_usd": 60.0,
+      "due_date": "2026-04-15",
+      "status": "paid",
+      "period": "2026-04"
+    },
+    "bill_002": {
+      "customer_id": "cust_001",
+      "amount_usd": 100.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_003": {
+      "customer_id": "cust_002",
+      "amount_usd": 150.0,
+      "due_date": "2026-04-15",
+      "status": "paid",
+      "period": "2026-04"
+    },
+    "bill_004": {
+      "customer_id": "cust_002",
+      "amount_usd": 150.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_005": {
+      "customer_id": "cust_003",
+      "amount_usd": 65.0,
+      "due_date": "2026-04-15",
+      "status": "paid",
+      "period": "2026-04"
+    },
+    "bill_006": {
+      "customer_id": "cust_003",
+      "amount_usd": 65.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_007": {
+      "customer_id": "cust_004",
+      "amount_usd": 130.0,
+      "due_date": "2026-04-15",
+      "status": "paid",
+      "period": "2026-04"
+    },
+    "bill_008": {
+      "customer_id": "cust_004",
+      "amount_usd": 130.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_009": {
+      "customer_id": "cust_005",
+      "amount_usd": 65.0,
+      "due_date": "2026-04-15",
+      "status": "paid",
+      "period": "2026-04"
+    },
+    "bill_010": {
+      "customer_id": "cust_005",
+      "amount_usd": 65.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_011": {
+      "customer_id": "cust_006",
+      "amount_usd": 100.0,
+      "due_date": "2026-04-15",
+      "status": "paid",
+      "period": "2026-04"
+    },
+    "bill_012": {
+      "customer_id": "cust_006",
+      "amount_usd": 100.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_013": {
+      "customer_id": "cust_007",
+      "amount_usd": 40.0,
+      "due_date": "2026-03-15",
+      "status": "overdue",
+      "period": "2026-03"
+    },
+    "bill_014": {
+      "customer_id": "cust_007",
+      "amount_usd": 40.0,
+      "due_date": "2026-04-15",
+      "status": "overdue",
+      "period": "2026-04"
+    },
+    "bill_015": {
+      "customer_id": "cust_008",
+      "amount_usd": 85.0,
+      "due_date": "2026-04-15",
+      "status": "paid",
+      "period": "2026-04"
+    },
+    "bill_016": {
+      "customer_id": "cust_008",
+      "amount_usd": 85.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_017": {
+      "customer_id": "cust_009",
+      "amount_usd": 90.0,
+      "due_date": "2026-04-15",
+      "status": "paid",
+      "period": "2026-04"
+    },
+    "bill_018": {
+      "customer_id": "cust_009",
+      "amount_usd": 90.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_019": {
+      "customer_id": "cust_010",
+      "amount_usd": 150.0,
+      "due_date": "2026-04-15",
+      "status": "paid",
+      "period": "2026-04"
+    },
+    "bill_020": {
+      "customer_id": "cust_010",
+      "amount_usd": 150.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_021": {
+      "customer_id": "cust_011",
+      "amount_usd": 80.0,
+      "due_date": "2026-03-15",
+      "status": "overdue",
+      "period": "2026-03"
+    },
+    "bill_022": {
+      "customer_id": "cust_011",
+      "amount_usd": 80.0,
+      "due_date": "2026-04-15",
+      "status": "overdue",
+      "period": "2026-04"
+    },
+    "bill_023": {
+      "customer_id": "cust_012",
+      "amount_usd": 100.0,
+      "due_date": "2026-04-15",
+      "status": "paid",
+      "period": "2026-04"
+    },
+    "bill_024": {
+      "customer_id": "cust_012",
+      "amount_usd": 100.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_025": {
+      "customer_id": "cust_013",
+      "amount_usd": 90.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_026": {
+      "customer_id": "cust_014",
+      "amount_usd": 60.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_027": {
+      "customer_id": "cust_015",
+      "amount_usd": 40.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_028": {
+      "customer_id": "cust_016",
+      "amount_usd": 100.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_029": {
+      "customer_id": "cust_017",
+      "amount_usd": 40.0,
+      "due_date": "2026-03-15",
+      "status": "overdue",
+      "period": "2026-03"
+    },
+    "bill_030": {
+      "customer_id": "cust_017",
+      "amount_usd": 40.0,
+      "due_date": "2026-04-15",
+      "status": "overdue",
+      "period": "2026-04"
+    },
+    "bill_031": {
+      "customer_id": "cust_018",
+      "amount_usd": 150.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_032": {
+      "customer_id": "cust_019",
+      "amount_usd": 60.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_033": {
+      "customer_id": "cust_020",
+      "amount_usd": 65.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_034": {
+      "customer_id": "cust_021",
+      "amount_usd": 90.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_035": {
+      "customer_id": "cust_022",
+      "amount_usd": 80.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_036": {
+      "customer_id": "cust_023",
+      "amount_usd": 85.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_037": {
+      "customer_id": "cust_024",
+      "amount_usd": 130.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_038": {
+      "customer_id": "cust_026",
+      "amount_usd": 150.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    },
+    "bill_039": {
+      "customer_id": "cust_028",
+      "amount_usd": 80.0,
+      "due_date": "2026-04-15",
+      "status": "overdue",
+      "period": "2026-04"
+    },
+    "bill_040": {
+      "customer_id": "cust_030",
+      "amount_usd": 150.0,
+      "due_date": "2026-05-15",
+      "status": "unpaid",
+      "period": "2026-05"
+    }
+  },
+  "devices": {
+    "dev_back_001": {"line_id": "line_001", "model": "iPhone 15", "imei": "356789012345671", "purchased_date": "2024-09-22"},
+    "dev_back_002": {"line_id": "line_002", "model": "Pixel 8", "imei": "356789012345672", "purchased_date": "2024-10-15"},
+    "dev_back_003": {"line_id": "line_003", "model": "Galaxy S24", "imei": "356789012345673", "purchased_date": "2024-11-03"},
+    "dev_back_004": {"line_id": "line_004", "model": "iPhone 14", "imei": "356789012345674", "purchased_date": "2023-09-22"},
+    "dev_back_005": {"line_id": "line_005", "model": "iPhone 15 Pro", "imei": "356789012345675", "purchased_date": "2024-09-22"},
+    "dev_back_006": {"line_id": "line_006", "model": "Pixel 7", "imei": "356789012345676", "purchased_date": "2023-10-15"},
+    "dev_back_007": {"line_id": "line_007", "model": "Galaxy A54", "imei": "356789012345677", "purchased_date": "2024-02-10"},
+    "dev_back_008": {"line_id": "line_008", "model": "iPhone 15", "imei": "356789012345678", "purchased_date": "2024-09-22"},
+    "dev_back_009": {"line_id": "line_009", "model": "Pixel 8", "imei": "356789012345679", "purchased_date": "2024-10-15"},
+    "dev_back_010": {"line_id": "line_010", "model": "Galaxy S23", "imei": "356789012345680", "purchased_date": "2023-08-11"},
+    "dev_back_011": {"line_id": "line_011", "model": "iPhone 14", "imei": "356789012345681", "purchased_date": "2023-09-22"},
+    "dev_back_012": {"line_id": "line_012", "model": "Galaxy A54", "imei": "356789012345682", "purchased_date": "2024-02-10"},
+    "dev_back_013": {"line_id": "line_013", "model": "iPhone 15 Pro Max", "imei": "356789012345683", "purchased_date": "2024-09-22"},
+    "dev_back_014": {"line_id": "line_014", "model": "Galaxy S24", "imei": "356789012345684", "purchased_date": "2024-11-03"},
+    "dev_back_015": {"line_id": "line_015", "model": "Galaxy S24", "imei": "356789012345685", "purchased_date": "2024-11-03"},
+    "dev_back_016": {"line_id": "line_016", "model": "Pixel 8", "imei": "356789012345686", "purchased_date": "2024-10-15"},
+    "dev_back_017": {"line_id": "line_017", "model": "iPhone 15", "imei": "356789012345687", "purchased_date": "2024-09-22"},
+    "dev_back_018": {"line_id": "line_018", "model": "Pixel 7a", "imei": "356789012345688", "purchased_date": "2023-05-12"},
+    "dev_back_019": {"line_id": "line_019", "model": "iPhone 15 Pro", "imei": "356789012345689", "purchased_date": "2024-09-22"},
+    "dev_back_020": {"line_id": "line_020", "model": "iPhone 13", "imei": "356789012345690", "purchased_date": "2022-09-24"},
+    "dev_back_021": {"line_id": "line_021", "model": "Galaxy A52", "imei": "356789012345691", "purchased_date": "2022-04-10"},
+    "dev_back_022": {"line_id": "line_022", "model": "Pixel 8", "imei": "356789012345692", "purchased_date": "2024-10-15"},
+    "dev_back_023": {"line_id": "line_023", "model": "iPhone 14", "imei": "356789012345693", "purchased_date": "2023-09-22"},
+    "dev_back_024": {"line_id": "line_024", "model": "Galaxy S24", "imei": "356789012345694", "purchased_date": "2024-11-03"},
+    "dev_back_025": {"line_id": "line_025", "model": "Pixel 7", "imei": "356789012345695", "purchased_date": "2023-10-15"},
+    "dev_back_026": {"line_id": "line_026", "model": "iPhone 15", "imei": "356789012345696", "purchased_date": "2024-09-22"},
+    "dev_back_027": {"line_id": "line_027", "model": "iPhone 15", "imei": "356789012345697", "purchased_date": "2024-09-22"},
+    "dev_back_028": {"line_id": "line_028", "model": "Galaxy S24", "imei": "356789012345698", "purchased_date": "2024-11-03"},
+    "dev_back_029": {"line_id": "line_029", "model": "Pixel 8", "imei": "356789012345699", "purchased_date": "2024-10-15"},
+    "dev_back_030": {"line_id": "line_030", "model": "Galaxy A54", "imei": "356789012345700", "purchased_date": "2024-02-10"},
+    "dev_back_031": {"line_id": "line_031", "model": "iPhone 15 Pro", "imei": "356789012345701", "purchased_date": "2024-09-22"},
+    "dev_back_032": {"line_id": "line_032", "model": "Pixel 8", "imei": "356789012345702", "purchased_date": "2024-10-15"},
+    "dev_back_033": {"line_id": "line_033", "model": "Galaxy S23", "imei": "356789012345703", "purchased_date": "2023-08-11"},
+    "dev_back_034": {"line_id": "line_034", "model": "iPhone 15", "imei": "356789012345704", "purchased_date": "2024-09-22"},
+    "dev_back_035": {"line_id": "line_035", "model": "iPhone 15 Pro Max", "imei": "356789012345705", "purchased_date": "2024-09-22"},
+    "dev_back_036": {"line_id": "line_036", "model": "Pixel 8", "imei": "356789012345706", "purchased_date": "2024-10-15"},
+    "dev_back_037": {"line_id": "line_037", "model": "Galaxy S24", "imei": "356789012345707", "purchased_date": "2024-11-03"},
+    "dev_back_038": {"line_id": "line_038", "model": "iPhone 14", "imei": "356789012345708", "purchased_date": "2023-09-22"},
+    "dev_back_039": {"line_id": "line_039", "model": "iPhone 14", "imei": "356789012345709", "purchased_date": "2023-09-22"},
+    "dev_back_040": {"line_id": "line_040", "model": "Pixel 7", "imei": "356789012345710", "purchased_date": "2023-10-15"},
+    "dev_back_041": {"line_id": "line_041", "model": "Galaxy S24", "imei": "356789012345711", "purchased_date": "2024-11-03"},
+    "dev_back_042": {"line_id": "line_042", "model": "Galaxy A52", "imei": "356789012345712", "purchased_date": "2022-04-10"},
+    "dev_back_043": {"line_id": "line_043", "model": "iPhone 15", "imei": "356789012345713", "purchased_date": "2024-09-22"},
+    "dev_back_044": {"line_id": "line_044", "model": "iPhone 15 Pro", "imei": "356789012345714", "purchased_date": "2024-09-22"},
+    "dev_back_045": {"line_id": "line_045", "model": "iPhone 15", "imei": "356789012345715", "purchased_date": "2024-09-22"},
+    "dev_back_046": {"line_id": "line_046", "model": "Pixel 8", "imei": "356789012345716", "purchased_date": "2024-10-15"},
+    "dev_back_047": {"line_id": "line_047", "model": "Galaxy A54", "imei": "356789012345717", "purchased_date": "2024-02-10"},
+    "dev_back_048": {"line_id": "line_048", "model": "Pixel 7a", "imei": "356789012345718", "purchased_date": "2023-05-12"},
+    "dev_back_049": {"line_id": "line_049", "model": "Galaxy S23", "imei": "356789012345719", "purchased_date": "2023-08-11"},
+    "dev_back_050": {"line_id": "line_050", "model": "iPhone 14", "imei": "356789012345720", "purchased_date": "2023-09-22"}
+  }
+}

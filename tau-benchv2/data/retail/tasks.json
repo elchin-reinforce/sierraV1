@@ -1,0 +1,245 @@
+[
+  {
+    "id": "retail_task_001",
+    "instruction": "You are Mei Patel, a customer. You want to cancel your pending order #W4082615 because you ordered it by mistake. Your email is mei.patel@example.com. Provide your email when asked for authentication. Confirm the cancellation when asked.",
+    "expected_actions": [
+      {"name": "cancel_pending_order", "arguments": {"order_id": "#W4082615", "reason": "ordered by mistake"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["cancel", "pending", "auth"]
+  },
+  {
+    "id": "retail_task_002",
+    "instruction": "You are Yusuf Rossi, a customer. You want to return the jeans in your delivered order #W7382910. The refund should go to your original payment method (credit_card_5421098). Your email is yusuf.rossi@example.com. Provide your email when asked.",
+    "expected_actions": [
+      {"name": "return_delivered_order_items", "arguments": {"order_id": "#W7382910", "item_ids": ["item_jeans_30_dark"], "payment_method_id": "credit_card_5421098"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["return", "delivered", "auth"]
+  },
+  {
+    "id": "retail_task_003",
+    "instruction": "You are Sofia Chen, a customer. You want to exchange the red small t-shirt in your delivered order #W1937482 for a medium blue one (item_tshirt_m_blue). Use credit_card_3847291 for any payment difference. Your email is sofia.chen@example.com.",
+    "expected_actions": [
+      {"name": "exchange_delivered_order_items", "arguments": {"order_id": "#W1937482", "item_ids": ["item_tshirt_s_red"], "new_item_ids": ["item_tshirt_m_blue"], "payment_method_id": "credit_card_3847291"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["exchange", "delivered", "auth"]
+  },
+  {
+    "id": "retail_task_004",
+    "instruction": "You are Marcus Johnson, a customer. You want to change the shipping address for your pending order #W5849302 to: 789 Pine Ave, Austin, TX 78702, USA. Your email is marcus.johnson@example.com. Provide your email when asked.",
+    "expected_actions": [
+      {"name": "modify_pending_order_address", "arguments": {"order_id": "#W5849302", "address1": "789 Pine Ave", "address2": "", "city": "Austin", "state": "TX", "country": "USA", "zip": "78702"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["modify", "pending", "auth"]
+  },
+  {
+    "id": "retail_task_005",
+    "instruction": "You are Aisha Williams, a customer. You want to update your profile address to: 456 Maple St, Seattle, WA 98102, USA. Your email is aisha.williams@example.com. Provide your email when asked.",
+    "expected_actions": [
+      {"name": "modify_user_address", "arguments": {"user_id": "aisha_williams_2234", "address1": "456 Maple St", "address2": "", "city": "Seattle", "state": "WA", "country": "USA", "zip": "98102"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["modify", "auth"]
+  },
+  {
+    "id": "retail_task_006",
+    "instruction": "You are Noah Garcia, a customer. You want to change the headphones in your pending order #W6172839 from the Pro model (item_headphones_black_pro) to the Standard model (item_headphones_black_standard), which is cheaper. Use credit_card_1029384 for the refund. Your email is noah.garcia@example.com.",
+    "expected_actions": [
+      {"name": "modify_pending_order_items", "arguments": {"order_id": "#W6172839", "item_ids": ["item_headphones_black_pro"], "new_item_ids": ["item_headphones_black_standard"], "payment_method_id": "credit_card_1029384"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["modify", "pending", "auth"]
+  },
+  {
+    "id": "retail_task_007",
+    "instruction": "You are Priya Sharma, a customer. You want to do two things: (1) Cancel pending order #W3948201 — reason is 'no longer needed'. (2) Change the shipping address of pending order #W8192034 to: 100 Congress Ave, Boston, MA 02102, USA. Your email is priya.sharma@example.com. Handle both requests.",
+    "expected_actions": [
+      {"name": "cancel_pending_order", "arguments": {"order_id": "#W3948201", "reason": "no longer needed"}},
+      {"name": "modify_pending_order_address", "arguments": {"order_id": "#W8192034", "address1": "100 Congress Ave", "address2": "", "city": "Boston", "state": "MA", "country": "USA", "zip": "02102"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 30,
+    "tags": ["compound", "cancel", "modify", "auth"]
+  },
+  {
+    "id": "retail_task_008",
+    "instruction": "You are Liam Nguyen, a customer. You want to cancel order #W2948301. Your email is liam.nguyen@example.com. Note: this order has status 'processed', so the agent should tell you it cannot be cancelled and either transfer you to a human agent or explain the policy.",
+    "expected_actions": [],
+    "required_outputs": ["processed"],
+    "max_turns": 15,
+    "tags": ["policy", "auth"]
+  },
+  {
+    "id": "retail_task_009",
+    "instruction": "You are Emma Kim, a customer. You want to know the price difference between the Wireless Headphones Pro (Black) and the Wireless Headphones Standard (Black). Authenticate with your email: emma.kim@example.com. The agent should look up the product and tell you the exact price difference.",
+    "expected_actions": [],
+    "required_outputs": ["70"],
+    "max_turns": 15,
+    "tags": ["calculation", "auth"]
+  },
+  {
+    "id": "retail_task_010",
+    "instruction": "You are Carlos Martin, a customer. You want to exchange all 3 water bottles in your delivered order #W7392841 — replace each of the colored bottles (blue, red, green) with a black 24oz water bottle (item_waterbottle_black_24oz). Use credit_card_4839201 for any payment. Your email is carlos.martin@example.com. The agent must collect all exchange pairs in a single call.",
+    "expected_actions": [
+      {"name": "exchange_delivered_order_items", "arguments": {"order_id": "#W7392841", "item_ids": ["item_waterbottle_blue_24oz", "item_waterbottle_red_24oz", "item_waterbottle_green_24oz"], "new_item_ids": ["item_waterbottle_black_24oz", "item_waterbottle_black_24oz", "item_waterbottle_black_24oz"], "payment_method_id": "credit_card_4839201"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 25,
+    "tags": ["exchange", "delivered", "auth"]
+  },
+  {
+    "id": "retail_task_011",
+    "instruction": "You are Olivia Brown, a customer. You want to return the phone case (item_phonecase_clear) in your delivered order #W2104411. The refund should go to your original payment method paypal_5563728. You prefer not to give your email; instead provide your full name and ZIP code (Atlanta 30301) when asked.",
+    "expected_actions": [
+      {"name": "return_delivered_order_items", "arguments": {"order_id": "#W2104411", "item_ids": ["item_phonecase_clear"], "payment_method_id": "paypal_5563728"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["return", "auth"]
+  },
+  {
+    "id": "retail_task_012",
+    "instruction": "You are Jin Park, a customer. You want to cancel your pending order #W2104412 because it is no longer needed. When the agent asks for authentication you first accidentally give an incorrect email (jin.park@wrong.com) — when the agent says it cannot find that account, then provide the correct email jin.park@example.com.",
+    "expected_actions": [
+      {"name": "cancel_pending_order", "arguments": {"order_id": "#W2104412", "reason": "no longer needed"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 25,
+    "tags": ["cancel", "pending", "auth"]
+  },
+  {
+    "id": "retail_task_013",
+    "instruction": "You are Nina Petrov, a customer. You paid for pending order #W2104413 with a gift card (gift_card_9988776) but want to switch the payment method to your credit card credit_card_8855221 instead. Your email is nina.petrov@example.com.",
+    "expected_actions": [
+      {"name": "modify_pending_order_payment", "arguments": {"order_id": "#W2104413", "payment_method_id": "credit_card_8855221"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["modify", "pending", "auth"]
+  },
+  {
+    "id": "retail_task_014",
+    "instruction": "You are Fatima Alvarez, a customer. You want to upgrade BOTH t-shirts in your pending order #W2104414 to large size: replace item_tshirt_s_red with item_tshirt_l_red, and replace item_tshirt_m_red with item_tshirt_l_red. Use credit_card_7799334 for the price difference. Your email is fatima.alvarez@example.com.",
+    "expected_actions": [
+      {"name": "modify_pending_order_items", "arguments": {"order_id": "#W2104414", "item_ids": ["item_tshirt_s_red", "item_tshirt_m_red"], "new_item_ids": ["item_tshirt_l_red", "item_tshirt_l_red"], "payment_method_id": "credit_card_7799334"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["modify", "pending", "auth"]
+  },
+  {
+    "id": "retail_task_015",
+    "instruction": "You are Sofia Chen, a customer. You want to return the watch (item_watch_classic_metal) in your delivered order #W2104415. Instead of refunding to your original credit card, please refund to your existing gift card gift_card_7291034. Your email is sofia.chen@example.com.",
+    "expected_actions": [
+      {"name": "return_delivered_order_items", "arguments": {"order_id": "#W2104415", "item_ids": ["item_watch_classic_metal"], "payment_method_id": "gift_card_7291034"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["return", "delivered", "auth"]
+  },
+  {
+    "id": "retail_task_016",
+    "instruction": "You are David Okonkwo, a customer. You want to return BOTH water bottles in your delivered order #W2104416 (item_waterbottle_red_24oz and item_waterbottle_blue_24oz). Refund to original payment method credit_card_1100221. Your email is david.okonkwo@example.com.",
+    "expected_actions": [
+      {"name": "return_delivered_order_items", "arguments": {"order_id": "#W2104416", "item_ids": ["item_waterbottle_red_24oz", "item_waterbottle_blue_24oz"], "payment_method_id": "credit_card_1100221"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["return", "delivered", "auth"]
+  },
+  {
+    "id": "retail_task_017",
+    "instruction": "You are Olivia Brown, a customer. You want to exchange the wallet in your delivered order #W2104417. You have item_wallet_brown_full (Full Grain) and want to swap it for the cheaper item_wallet_brown_genuine (Genuine leather variant). Refund the price difference to paypal_5563728. Your email is olivia.brown@example.com.",
+    "expected_actions": [
+      {"name": "exchange_delivered_order_items", "arguments": {"order_id": "#W2104417", "item_ids": ["item_wallet_brown_full"], "new_item_ids": ["item_wallet_brown_genuine"], "payment_method_id": "paypal_5563728"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["exchange", "delivered", "auth"]
+  },
+  {
+    "id": "retail_task_018",
+    "instruction": "You are Fatima Alvarez, a customer. You want to exchange the laptop in order #W2104418. Your email is fatima.alvarez@example.com. The order has status 'processed' so the agent should tell you it cannot be exchanged.",
+    "expected_actions": [],
+    "required_outputs": ["processed"],
+    "max_turns": 15,
+    "tags": ["policy", "auth"]
+  },
+  {
+    "id": "retail_task_019",
+    "instruction": "You are Nina Petrov, a customer. You want to change item_sunglass_aviator_gold in your pending order #W2104419 to item_tshirt_m_blue (a different product type). Your email is nina.petrov@example.com. Use credit_card_8855221 if asked. The agent should refuse because changing product type is not allowed.",
+    "expected_actions": [],
+    "required_outputs": ["product type"],
+    "max_turns": 20,
+    "tags": ["policy", "auth"]
+  },
+  {
+    "id": "retail_task_020",
+    "instruction": "You are David Okonkwo, a customer. You want to return the hair dryer (item_hairdryer_black_1500w) in your delivered order #W2104420. The refund should go to credit_card_1100221. Your email is david.okonkwo@example.com. The agent must clearly tell you the refund amount in dollars.",
+    "expected_actions": [
+      {"name": "return_delivered_order_items", "arguments": {"order_id": "#W2104420", "item_ids": ["item_hairdryer_black_1500w"], "payment_method_id": "credit_card_1100221"}}
+    ],
+    "required_outputs": ["39.99"],
+    "max_turns": 20,
+    "tags": ["return", "delivered", "auth"]
+  },
+  {
+    "id": "retail_task_021",
+    "instruction": "You are Jin Park, a customer. You want to know the current status of your order #W2104421. Authenticate with email jin.park@example.com. The agent should look up the order and tell you the status.",
+    "expected_actions": [],
+    "required_outputs": ["delivered"],
+    "max_turns": 15,
+    "tags": ["read_only", "auth"]
+  },
+  {
+    "id": "retail_task_022",
+    "instruction": "You are Emma Kim, a customer. You want to do two things: (1) Cancel pending order #W8294031 because it is no longer needed. (2) Change the yoga mat in pending order #W2104422 from item_yoga_blue_6mm to item_yoga_green_8mm. Use gift_card_1938472 for the items modification. Your email is emma.kim@example.com.",
+    "expected_actions": [
+      {"name": "cancel_pending_order", "arguments": {"order_id": "#W8294031", "reason": "no longer needed"}},
+      {"name": "modify_pending_order_items", "arguments": {"order_id": "#W2104422", "item_ids": ["item_yoga_blue_6mm"], "new_item_ids": ["item_yoga_green_8mm"], "payment_method_id": "gift_card_1938472"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 30,
+    "tags": ["compound", "cancel", "modify", "auth"]
+  },
+  {
+    "id": "retail_task_023",
+    "instruction": "You are Olivia Brown, a customer. You moved and want to update BOTH your profile address AND the shipping address of your pending order #W2104423 to the same new address: 222 Marietta St, Atlanta, GA 30303, USA. Your email is olivia.brown@example.com.",
+    "expected_actions": [
+      {"name": "modify_user_address", "arguments": {"user_id": "olivia_brown_1122", "address1": "222 Marietta St", "address2": "", "city": "Atlanta", "state": "GA", "country": "USA", "zip": "30303"}},
+      {"name": "modify_pending_order_address", "arguments": {"order_id": "#W2104423", "address1": "222 Marietta St", "address2": "", "city": "Atlanta", "state": "GA", "country": "USA", "zip": "30303"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 30,
+    "tags": ["compound", "modify", "auth"]
+  },
+  {
+    "id": "retail_task_024",
+    "instruction": "You are David Okonkwo, a customer. You want to return ONLY the clear phone case (item_phonecase_clear) from your delivered order #W2104424, keeping the black and blue cases. Refund to paypal_3322110. Your email is david.okonkwo@example.com.",
+    "expected_actions": [
+      {"name": "return_delivered_order_items", "arguments": {"order_id": "#W2104424", "item_ids": ["item_phonecase_clear"], "payment_method_id": "paypal_3322110"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["return", "delivered", "auth"]
+  },
+  {
+    "id": "retail_task_025",
+    "instruction": "You are Nina Petrov, a customer. You want to exchange item_phonecase_blue in your delivered order #W2104425 for the black variant (item_phonecase_black) — you decided you prefer black. Use credit_card_8855221 for any payment. Your email is nina.petrov@example.com.",
+    "expected_actions": [
+      {"name": "exchange_delivered_order_items", "arguments": {"order_id": "#W2104425", "item_ids": ["item_phonecase_blue"], "new_item_ids": ["item_phonecase_black"], "payment_method_id": "credit_card_8855221"}}
+    ],
+    "required_outputs": [],
+    "max_turns": 20,
+    "tags": ["exchange", "delivered", "auth"]
+  }
+]

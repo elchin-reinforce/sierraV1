@@ -4,3 +4,9 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .DS_Store
+
+# tau-benchv2 (Sierra V2) — track source and reports; skip secrets and caches
+tau-benchv2/.env
+tau-benchv2/.venv/
+tau-benchv2/.pytest_cache/
+tau-benchv2/**/__pycache__/
