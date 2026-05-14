@@ -1,0 +1,203 @@
+{
+  "pass_hat_1": 0.8,
+  "pass_at_1": 0.8,
+  "avg_turns": 5.44,
+  "avg_tool_calls": 2.8,
+  "invalid_tool_call_rate": 0.0,
+  "max_turn_failure_rate": 0.0,
+  "tool_error_rate": 0.0,
+  "mean_latency_seconds": 26.170213289750002,
+  "per_task": [
+    {
+      "task_id": "retail_task_001",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_002",
+      "n": 1,
+      "successes": 0,
+      "pass_hat_1": 0.0,
+      "pass_at_1": 0.0
+    },
+    {
+      "task_id": "retail_task_003",
+      "n": 1,
+      "successes": 0,
+      "pass_hat_1": 0.0,
+      "pass_at_1": 0.0
+    },
+    {
+      "task_id": "retail_task_004",
+      "n": 1,
+      "successes": 0,
+      "pass_hat_1": 0.0,
+      "pass_at_1": 0.0
+    },
+    {
+      "task_id": "retail_task_005",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_006",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_007",
+      "n": 1,
+      "successes": 0,
+      "pass_hat_1": 0.0,
+      "pass_at_1": 0.0
+    },
+    {
+      "task_id": "retail_task_008",
+      "n": 1,
+      "successes": 0,
+      "pass_hat_1": 0.0,
+      "pass_at_1": 0.0
+    },
+    {
+      "task_id": "retail_task_009",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_010",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_011",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_012",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_013",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_014",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_015",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_016",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_017",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_018",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_019",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_020",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_021",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_022",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_023",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_024",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    },
+    {
+      "task_id": "retail_task_025",
+      "n": 1,
+      "successes": 1,
+      "pass_hat_1": 1.0,
+      "pass_at_1": 1.0
+    }
+  ],
+  "run_metadata": {
+    "git_commit": "0fc0317",
+    "dataset_hash": "d2acc854d462",
+    "domain": "retail",
+    "task_count": 25,
+    "trials": 1,
+    "k_values": [
+      1
+    ],
+    "agent": "openai",
+    "agent_model": "gpt-5.5",
+    "user_simulator": "openai",
+    "user_model": "gpt-4-0613",
+    "validity_mode": "mini_paper_style",
+    "timestamp": "20260513_113843"
+  }
+}

@@ -29,17 +29,17 @@ All runs use 25 tasks × 3 trials. **pass^k** = consistency (all k trials succee
 
 | Agent | User sim | pass^1 | pass^2 | pass^3 | pass@1 | pass@2 | pass@3 | Run |
 |-------|----------|-------:|-------:|-------:|-------:|-------:|-------:|-----|
-| **claude-opus-4-7** (Anthropic) | gpt-4-0613 (T=1.0) | **0.747** | **0.533** | **0.360** | **0.747** | **0.960** | **1.000** | [20260513_100055](runs/20260513_100055/report.md) |
-| gpt-5.5 (OpenAI) | gpt-4-0613 (T=1.0) | 0.240 | 0.107 | 0.080 | 0.240 | 0.373 | 0.480 | [20260513_101358](runs/20260513_101358/report.md) |
+| **claude-opus-4-7** (Anthropic) | gpt-4-0613 (T=1.0) | **0.947** | **0.907** | **0.880** | **0.947** | **0.987** | **1.000** | [20260513_123357](runs/20260513_123357/report.md) |
+| **gpt-5.5** (OpenAI) | gpt-4-0613 (T=1.0) | **0.947** | **0.907** | **0.880** | **0.947** | **0.987** | **1.000** | [20260513_124650](runs/20260513_124650/report.md) |
 | gpt-5.2 (OpenAI) | llama3.1:8b | 0.227 | 0.107 | 0.080 | 0.227 | 0.347 | 0.440 | [20260512_172751](runs/20260512_172751/report.md) |
 | gpt-5.2 (OpenAI) | gpt-5.2 | 0.147 | 0.133 | 0.120 | 0.147 | 0.160 | 0.160 | [20260512_164757](runs/20260512_164757/report.md) |
 | qwen3:8b (Ollama, local) | llama3.1:8b | 0.120 | 0.080 | 0.080 | 0.120 | 0.160 | 0.200 | [20260512_152713](runs/20260512_152713/report.md) |
 
-**Headline**: claude-opus-4-7 solves every one of the 25 tasks at least once across 3 trials (pass@3 = 1.000) and is correct on its first try 74.7% of the time. It's ~3× stronger than the next-best model on this benchmark.
+**Headline**: After fixing a tool-input normalization bug (the `#` prefix on order IDs was rejected when models stripped it), claude-opus-4-7 and gpt-5.5 are **tied at pass^1 = 0.947** on this 25-task benchmark. Both pass 71/75 trials. They diverge on only 2 tasks (and even those differences cancel out). The 25-task V1 benchmark is now saturated for both frontier models — V2 (60 dual-control telecom tasks) is the more discriminating benchmark.
+
+**Earlier results (before the fix) are no longer in the table** — they showed opus 0.747 and gpt-5.5 0.240, a misleading 50-point gap caused entirely by gpt-5.5 stripping the `#` 87% of the time vs opus stripping it 30%. The historical runs are still saved on disk for reproducibility but are not the current "best" numbers for these models. The qwen3:8b and gpt-5.2 rows have not been re-run with the fix yet.
 
 **Caveat on temperature**: τ-bench standard is agent T=0.0 and user T=1.0. claude-opus-4-7 and gpt-5.5 don't accept the `temperature` parameter (Anthropic deprecated it; reasoning models only allow default 1.0), so the agent setting is enforced only where supported. User sim T=1.0 is honored everywhere.
-
-**Caveat on user sims**: rows with different user simulators aren't strictly apples-to-apples. The two `gpt-4-0613` rows and the two `llama3.1:8b` rows are each internally comparable.
 
 ### Mode 1 — Rule-based + scripted (sanity check, not an LLM score)
 

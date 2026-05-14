@@ -1,6 +1,7 @@
 """OpenAI-backed LLM user simulator (PAID API)."""
 from __future__ import annotations
 import os
+import time
 from typing import Any
 
 from .base import BaseUser
@@ -37,11 +38,25 @@ class OpenAIUser(BaseUser):
 
     def _complete(self) -> str:
         # User simulator runs at T=1.0 to match the τ-bench paper setup.
-        response = self._client.chat.completions.create(
-            model=self._model,
-            messages=self._history,
-            temperature=1.0,
-        )
+        backoff = 8.0
+        last_err = None
+        for attempt in range(7):
+            try:
+                response = self._client.chat.completions.create(
+                    model=self._model,
+                    messages=self._history,
+                    temperature=1.0,
+                )
+                break
+            except Exception as e:
+                last_err = e
+                if "429" in str(e) and attempt < 6:
+                    time.sleep(backoff)
+                    backoff = min(backoff * 2, 90.0)
+                    continue
+                raise
+        else:
+            raise RuntimeError(f"OpenAIUser failed after retries: {last_err}")
         reply = response.choices[0].message.content or ""
         self._history.append({"role": "assistant", "content": reply})
         return reply

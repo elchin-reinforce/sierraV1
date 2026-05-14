@@ -7,6 +7,19 @@ from typing import Any
 from taufreebench.core.tool import tool
 
 
+def _normalize_order_id(order_id: str) -> str:
+    """Order IDs in the DB always start with '#'. Many models pass them without the prefix
+    (e.g., 'W4082615' instead of '#W4082615'). Normalize so the lookup succeeds either way.
+    The original τ-bench tool implementations are similarly lenient.
+    """
+    if not isinstance(order_id, str):
+        return order_id
+    order_id = order_id.strip()
+    if order_id.startswith("#"):
+        return order_id
+    return "#" + order_id
+
+
 # ---------------------------------------------------------------------------
 # Read tools
 # ---------------------------------------------------------------------------
@@ -61,6 +74,7 @@ def get_user_details(db: dict[str, Any], user_id: str) -> dict[str, Any]:
     domain="retail",
 )
 def get_order_details(db: dict[str, Any], order_id: str) -> dict[str, Any]:
+    order_id = _normalize_order_id(order_id)
     order = db["orders"].get(order_id)
     if order is None:
         return {"error": f"Error: Order '{order_id}' not found."}
@@ -128,6 +142,7 @@ def transfer_to_human_agents(db: dict[str, Any], summary: str) -> str:
     domain="retail",
 )
 def cancel_pending_order(db: dict[str, Any], order_id: str, reason: str) -> dict[str, Any]:
+    order_id = _normalize_order_id(order_id)
     order = db["orders"].get(order_id)
     if order is None:
         return {"error": f"Error: Order '{order_id}' not found."}
@@ -170,6 +185,7 @@ def modify_pending_order_address(
     country: str,
     zip: str,
 ) -> dict[str, Any]:
+    order_id = _normalize_order_id(order_id)
     order = db["orders"].get(order_id)
     if order is None:
         return {"error": f"Error: Order '{order_id}' not found."}
@@ -240,6 +256,7 @@ def modify_pending_order_payment(
     order_id: str,
     payment_method_id: str,
 ) -> dict[str, Any]:
+    order_id = _normalize_order_id(order_id)
     order = db["orders"].get(order_id)
     if order is None:
         return {"error": f"Error: Order '{order_id}' not found."}
@@ -285,6 +302,7 @@ def modify_pending_order_items(
     new_item_ids: list[str],
     payment_method_id: str,
 ) -> dict[str, Any]:
+    order_id = _normalize_order_id(order_id)
     order = db["orders"].get(order_id)
     if order is None:
         return {"error": f"Error: Order '{order_id}' not found."}
@@ -368,6 +386,7 @@ def return_delivered_order_items(
     item_ids: list[str],
     payment_method_id: str,
 ) -> dict[str, Any]:
+    order_id = _normalize_order_id(order_id)
     order = db["orders"].get(order_id)
     if order is None:
         return {"error": f"Error: Order '{order_id}' not found."}
@@ -433,6 +452,7 @@ def exchange_delivered_order_items(
     new_item_ids: list[str],
     payment_method_id: str,
 ) -> dict[str, Any]:
+    order_id = _normalize_order_id(order_id)
     order = db["orders"].get(order_id)
     if order is None:
         return {"error": f"Error: Order '{order_id}' not found."}
